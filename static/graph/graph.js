@@ -11,6 +11,10 @@ $(document).ready(function() {
         ],
         containers = document.getElementsByClassName('containers');
 
+    var fs = require('fs');
+    var files = fs.readdirSync('static/data/');
+    console.log(files);
+
     function loadFromGexf(path, container){
         // Asynchronously fetch the gexf file and parse it
         gexf.fetch(path, function(graph) {
@@ -65,8 +69,12 @@ $(document).ready(function() {
 
     function changeGraph(index) {
         for (var i = 0; i < containers.length; i++){
-            if (i === index) $(containers.item(i)).show();
-            else $(containers.item(i)).hide();
+            if (i === index){
+                $(containers.item(i)).show();
+            }
+            else {
+                $(containers.item(i)).hide();
+            }
         }
     }
 
