@@ -1,68 +1,79 @@
 $(document).ready(function() {
     /**
-     * This is a basic example on how to instantiate sigma. A random graph is
-     * generated and stored in the "graph" variable, and then sigma is instantiated
-     * directly with the graph.
-     *
-     * The simple instance of sigma is enough to make it render the graph on the on
-     * the screen, since the graph is given directly to the constructor.
+     * Load Gexf file and display them on the web page
      */
-    var i,
-        s,
-        N = 100,
-        g = {
-            nodes: [],
-            edges: []
-        },
-        colors = [
+    var colors = [
             '#617db4',
             '#668f3c',
             '#c6583e',
             '#b956af',
             '#b9ae2f'
-        ];
+        ],
+        containers = document.getElementsByClassName('containers');
 
-    // Generate a random graph:
-    g.nodes.push(
-        {id:'0', label:'Character', x:100 * Math.cos(2 * Math.PI / N), y:100 * Math.sin(2 * Math.PI / N), size:20, color:colors[0]},
-        {id:'1', label:'Character', x:100 * Math.cos(4 * Math.PI / N), y:100 * Math.sin(4 * Math.PI / N), size:20, color:colors[0]},
-        {id:'2', label:'User', x:100 * Math.cos(8 * Math.PI / N), y:100 * Math.sin(8 * Math.PI / N), size:20, color:colors[1]},
-        {id:'3', label:'User', x:100 * Math.cos(16 * Math.PI / N), y:100 * Math.sin(16 * Math.PI / N), size:20, color:colors[1]},
-        {id:'4', label:'Number', x:100 * Math.cos(32 * Math.PI / N), y:100 * Math.sin(32 * Math.PI / N), size:20, color:colors[2]},
-        {id:'5', label:'Number', x:100 * Math.cos(64 * Math.PI / N), y:100 * Math.sin(64 * Math.PI / N), size:20, color:colors[2]},
-        {id:'6', label:'APP', x:100 * Math.cos(128 * Math.PI / N), y:100 * Math.sin(128 * Math.PI / N), size:20, color:colors[3]},
-        {id:'7', label:'Website', x:100 * Math.cos(256 * Math.PI / N), y:100 * Math.sin(256 * Math.PI / N), size:20, color:colors[4]});
+    function loadFromGexf(path, container){
+        // Asynchronously fetch the gexf file and parse it
+        gexf.fetch(path, function(graph) {
+            var i,
+                N = 100,
+                c = {},
+                count = 0,
+                currLabel;
+            for (i = 0; i < graph.nodes.length; i++) {
+                var currNode = graph.nodes[i];
+                currLabel = currNode.label;
+                if (typeof (c[currLabel]) === 'undefined') {
+                    c[currLabel] = count;
+                    count++;
+                }
+                currNode.x = 5 * Math.cos(2 * i * Math.PI / N);
+                currNode.y = 5 * Math.sin(2 * i * Math.PI / N);
+                currNode.size = 2;
+                currNode.color = colors[c[currLabel]];
+            }
+            for (i = 0; i < graph.edges.length; i++){
+                var currEdge = graph.edges[i];
+                currEdge.type = 'curvedArrow';
+                currEdge.color = '#ccc';
+            }
 
-    g.edges.push(
-        {id:'0', label: 'called', source: '2', target: '4', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'1', label: 'called', source: '2', target: '4', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'2', label: 'message', source: '4', target: '2', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'3', label: 'called', source: '2', target: '5', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'4', label: 'called', source: '3', target: '5', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'5', label: 'message', source: '5', target: '3', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'6', label: 'is', source: '2', target: '1', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'7', label: 'is', source: '3', target: '0', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'8', label: 'visit', source: '2', target: '6', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'9', label: 'visit', source: '3', target: '6', size: 2, color:'#ccc', type: 'curvedArrow'},
-        {id:'10', label: 'visit', source: '3', target: '7', size: 2, color:'#ccc', type: 'curvedArrow'});
+            // Instantiate sigma:
+            var s = new sigma({
+                graph: graph,
+                renderer: {
+                    container: container,
+                    type: 'canvas'
+                },
+                settings: {
+                    edgeLabelSize: 'proportional',
+                    sideMargin: 1
+                }
+            });
 
-    // Instantiate sigma:
-    s = new sigma({
-        graph: g,
-        renderer: {
-            container: document.getElementById('graph-container'),
-            type: 'canvas'
-        },
-        settings: {
-            edgeLabelSize: 'proportional',
-            sideMargin: 1
+            // Start the ForceAtlas2 algorithm:
+            s.startForceAtlas2({worker: true, barnesHutOptimize: false});
+        });
+    }
+
+    loadFromGexf('../data/data.gexf', containers[0]);
+    loadFromGexf('../data/standard_graph.gexf', containers[1]);
+
+    for (var i = 0; i < containers.length; i++){
+        if (i === 0) $(containers.item(i)).show();
+        else $(containers.item(i)).hide();
+    }
+
+    function changeGraph(index) {
+        for (var i = 0; i < containers.length; i++){
+            if (i === index) $(containers.item(i)).show();
+            else $(containers.item(i)).hide();
         }
+    }
+
+    $('#g1').click(function () {
+        changeGraph(0);
     });
-
-    sigma.parsers.gexf('../data/data.gexf', s);
-
-    console.log(g);
-
-    // Start the ForceAtlas2 algorithm:
-    s.startForceAtlas2({worker: true, barnesHutOptimize: false});
+    $('#g2').click(function () {
+        changeGraph(1);
+    });
 });
