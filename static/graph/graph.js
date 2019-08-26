@@ -54,8 +54,8 @@ $(document).ready(function() {
             type: 'canvas'
         },
         settings: {
-            edgeLabelSize: 'proportional'//,
-            // autoRescale: false
+            edgeLabelSize: 'proportional',
+            sideMargin: 1.5
         }
     });
 
