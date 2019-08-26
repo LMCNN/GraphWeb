@@ -55,9 +55,13 @@ $(document).ready(function() {
         },
         settings: {
             edgeLabelSize: 'proportional',
-            sideMargin: 1.5
+            sideMargin: 1
         }
     });
+
+    sigma.parsers.gexf('../data/data.gexf', s);
+
+    console.log(g);
 
     // Start the ForceAtlas2 algorithm:
     s.startForceAtlas2({worker: true, barnesHutOptimize: false});

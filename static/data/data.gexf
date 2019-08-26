@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+   <meta lastmodifieddate="2019-08-12">
+      <creator>Mingchi Li</creator>
+      <description>Demo network</description>
+   </meta>
+   <graph defaultedgetype="directed">
+      <attributes class="vertexLabel">
+         <attribute name="User" priority="2"/>
+          <attribute name="Number" priority="1"/>
+          <attribute name="Character" priority="0"/>
+          <attribute name="Website" priority="3"/>
+          <attribute name="APP" priority="4"/>
+      </attributes>
+      <attributes class="edgeLabel">
+          <attribute name="called" priority="1" prefix="" postfix=""/>
+          <attribute name="message" priority="2" prefix="send" postfix="to"/>
+          <attribute name="visit" priority="4" prefix="" postfix=""/>
+          <attribute name="is" priority="0" prefix="" postfix=""/>
+      </attributes>
+
+      <attributes class="node">
+         <attribute id="0" title="name" type="string" />
+         <attribute id="1" title="gender" type="string"/>
+         <attribute id="2" title="age" type="string"/>
+      </attributes>
+      <nodes>
+         <node id="0" label="Character">
+            <attvalues>
+               <attvalue for="0" value="fake" />
+            </attvalues>
+         </node>
+         <node id="1" label="Character">
+            <attvalues>
+               <attvalue for="0" value="not fake" />
+            </attvalues>
+         </node>
+         <node id="2" label="User">
+            <attvalues>
+               <attvalue for="0" value="Xiaobai Li" />
+               <attvalue for="1" value="female"/>
+               <attvalue for="2" value="19"/>
+            </attvalues>
+         </node>
+         <node id="3" label="User">
+            <attvalues>
+               <attvalue for="0" value="Geek Zhang" />
+               <attvalue for="1" value="male"/>
+               <attvalue for="2" value="25"/>
+            </attvalues>
+         </node>
+         <node id="4" label="Number">
+            <attvalues>
+               <attvalue for="0" value="110" />
+            </attvalues>
+         </node>
+         <node id="5" label="Number">
+            <attvalues>
+               <attvalue for="0" value="119" />
+            </attvalues>
+         </node>
+         <node id="6" label="APP">
+            <attvalues>
+               <attvalue for="0" value="WeChat" />
+            </attvalues>
+         </node>
+         <node id="7" label="Website">
+            <attvalues>
+               <attvalue for="0" value="360.com" />
+            </attvalues>
+         </node>
+      </nodes>
+      <edges>
+         <edge id="0" source="2" target="4" label="called"/>
+         <edge id="1" source="2" target="4" label="called"/>
+         <edge id="2" source="4" target="2" label="message"/>
+         <edge id="3" source="2" target="5" label="called"/>
+         <edge id="4" source="3" target="5" label="called"/>
+         <edge id="5" source="5" target="3" label="message"/>
+         <edge id="6" source="2" target="1" label="is"/>
+         <edge id="7" source="3" target="0" label="is"/>
+         <edge id="8" source="2" target="6" label="visit"/>
+         <edge id="9" source="3" target="6" label="visit"/>
+         <edge id="10" source="3" target="7" label="visit"/>
+      </edges>
+   </graph>
+</gexf>
