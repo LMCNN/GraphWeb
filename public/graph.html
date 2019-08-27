@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <script src="javascript/lib/jquery-2.1.1.min.js"></script>
+    <!-- SIGMA IMPORTS -->
+    <script src="javascript/lib/sigma.min.js"></script>
+    <!-- SIGMA PLUGIN IMPORTS -->
+    <script src="javascript/lib/plugins/sigma.renderers.edgeLabels.min.js"></script>
+    <script src="javascript/lib/plugins/sigma.renderers.parallelEdges.min.js"></script>
+    <script src="javascript/lib/plugins/sigma.layout.forceAtlas2.min.js"></script>
+    <script src="javascript/lib/plugins/sigma.parsers.gexf.min.js"></script>
+    <!-- GRAPH SCRIPT-->
+    <script src="javascript/graph.js"></script>
+    
+    <head>
+        <title>Test Graph</title>
+        <link rel="stylesheet" type="text/css" href="stylesheets/graph.css">
+    </head>
+
+    <body>
+        <ul>
+            <li><a href="#" id="g1">Graph 1</a></li>
+            <li><a href="#" id="g2">Graph 2</a></li>
+
+        </ul>
+
+        <div style="margin-left:20%;padding:1px 16px;height:1000px;">
+            <div class="containers" id="container1"></div>
+            <div class="containers" id="container2"></div>
+        </div>
+    </body>
+</html>
