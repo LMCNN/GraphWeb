@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz" version="1.2">
+ <meta lastmodifieddate="2019-08-16">
+  <creator>h1112.buaa.com</creator>
+  <description>graph exchange file</description>
+ </meta>
+ <graph defaultedgetype="directed" idtype="string" mode="static">
+  <attributes class="node" mode="static">
+   <attribute id="0" title="name" type="string"/>
+   <attribute id="1" title="gender" type="string"/>
+   <attribute id="2" title="age" type="string"/>
+  </attributes>
+
+  <nodes count="5">
+   <node id="1" label="user$id">
+    <attvalues>
+     <attvalue for="0" value="user$id$1"/>
+     <attvalue for="1" value="male"/>
+	 <attvalue for="2" value="19"/>
+    </attvalues>
+   </node>
+
+   <node id="2" label="opposite$number">
+    <attvalues>
+     <attvalue for="0" value="opposite$number$2"/>
+    </attvalues>
+   </node>
+
+   <node id="3" label="user$id">
+    <attvalues>
+     <attvalue for="0" value="user$id$3"/>
+     <attvalue for="1" value="male"/>
+	 <attvalue for="2" value="33"/>
+    </attvalues>
+   </node>
+
+   <node id="4" label="is$fake">
+    <attvalues>
+     <attvalue for="0" value="is$fake$4"/>
+    </attvalues>
+   </node>
+
+   <node id="5" label="user$id">
+    <attvalues>
+     <attvalue for="0" value="user$id$5"/>
+     <attvalue for="1" value="female"/>
+	 <attvalue for="2" value="13"/>
+    </attvalues>
+   </node>
+  </nodes>
+
+  <edges count="4">
+   <edge id="1" source="1" target="2" type="directed" label="user$id@opposite$number" weight="1.0"/>
+   <edge id="2" source="3" target="2" type="directed" label="user$id@opposite$number" weight="1.0"/>
+   <edge id="3" source="3" target="4" type="directed" label="user$id@is$fake" weight="1.0"/>
+   <edge id="4" source="5" target="4" type="directed" label="user$id@not$fake" weight="1.0"/>
+  </edges>
+ </graph>
+</gexf>

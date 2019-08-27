@@ -1,14 +1,16 @@
 $(document).ready(function () {
-    let s = new sigma(document.getElementById('container'));
+    let s = new sigma(document.getElementById('container')),
+        currGraph = 0;
 
     //get the graph number from the server
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:3000/rendNav',
+        url: '/rendNav',
         dataType: 'json',
         success: function(response) {
             renderNavBar(response);
             switchGraph();
+            describe();
         },
         error: function(xhr) {
             //Do Something to handle error
@@ -59,10 +61,12 @@ $(document).ready(function () {
 
     //using the sigma js to render the graph which received from server
     function renderGraph(graph) {
+        currGraph = graph.gid;
+        console.log(currGraph);
         console.log(graph);
 
         $( "#container" ).remove();
-        $('<div id="container"></div>').insertAfter("#navBar");
+        $('<div id="container"></div>').insertAfter("#content");
 
         // Instantiate sigma:
         s = new sigma({
@@ -79,6 +83,25 @@ $(document).ready(function () {
 
         // Start the ForceAtlas2 algorithm:
         s.startForceAtlas2({worker: true, barnesHutOptimize: false});
+    }
+
+    function describe(){
+        $('#describeBtn').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/describe?id=' + currGraph,
+                dataType: 'text',
+                success: showMessage,
+                error: function(xhr) {
+                    alert('error');
+                }
+            });
+        })
+    }
+
+    function showMessage(msg) {
+        alert(msg);
+        // $('#msg').append('<a>' + msg + '</a>');
     }
 });
 
