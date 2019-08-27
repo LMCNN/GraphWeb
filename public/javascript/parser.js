@@ -1,6 +1,7 @@
 const fs = require('fs');
 const gexf = require('gexf');
 
+//this module parse the graph files from a folder
 module.exports = {
   parseGEXF: function () {
       const colors = [
