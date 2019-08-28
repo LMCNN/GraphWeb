@@ -24,6 +24,7 @@ $(document).ready(function () {
 
     function switchGraph() {
         $('.navBar').click(function(event) {
+            //select graph to load
             event.preventDefault();
             $.ajax({
                 type: 'GET',
@@ -35,6 +36,21 @@ $(document).ready(function () {
                 }
             });
             return false; // for good measure
+        });
+
+        //search graph to load
+        $('#searchBtn').click(function () {
+            let v = $('#searchVal').val();
+            $.ajax({
+                type: 'GET',
+                url: '/graph?id=' + v,
+                dataType: 'json',
+                success: loadGraph,
+                error: function(xhr) {
+                    alert('Invalid input!\n' +
+                        'Please enter a graph number.');
+                }
+            });
         });
     }
 

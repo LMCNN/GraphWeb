@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="javascript/lib/jquery-2.1.1.min.js"></script>
     <!-- SIGMA IMPORTS -->
     <script src="javascript/lib/sigma.min.js"></script>
@@ -9,7 +11,6 @@
     <script src="javascript/lib/plugins/sigma.layout.forceAtlas2.min.js"></script>
     <script src="javascript/lib/plugins/sigma.parsers.gexf.min.js"></script>
     <!-- GRAPH SCRIPT-->
-<!--    <script src="javascript/graph.js"></script>-->
     <script src="javascript/main.js"></script>
     
     <head>
@@ -18,7 +19,12 @@
     </head>
 
     <body>
-        <ul id='navBar'></ul>
+        <ul id='navBar'>
+            <!-- The Search Bar -->
+            <input id="searchVal" type="text" placeholder="Search.." name="search">
+            <button id="searchBtn"><i class="fa fa-search"></i></button>
+            <br><br><br>
+        </ul>
 
         <div id="container"></div>
     </body>
