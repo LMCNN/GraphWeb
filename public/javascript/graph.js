@@ -2,7 +2,7 @@ $(document).ready(function() {
     /**
      * Load Gexf file and display them on the web page
      */
-    var colors = [
+    const colors = [
             '#617db4',
             '#668f3c',
             '#c6583e',
