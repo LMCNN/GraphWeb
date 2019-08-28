@@ -78,10 +78,10 @@ $(document).ready(function() {
         }
     }
 
-    $('#g1').click(function () {
+    $('#g0').click(function () {
         changeGraph(0);
     });
-    $('#g2').click(function () {
+    $('#g1').click(function () {
         changeGraph(1);
     });
 });
