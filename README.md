@@ -1,2 +1,2 @@
 # GraphWeb
- A web application about graph
+A web application about graph
