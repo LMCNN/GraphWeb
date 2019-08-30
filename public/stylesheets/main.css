@@ -6,7 +6,7 @@
 
 html, body {
     position: relative;
-    background-color: #FFFFFF;
+    background-color: rgba(240,248,255,.3);
     height:100%;
 }
 
@@ -16,10 +16,10 @@ html, body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 12%;
+    width: 15%;
     height: 100%;
     padding: 5px;
-    background-color: #f1f1f1;
+    background-color: #333;
 }
 
 .navBar.ul {
@@ -34,7 +34,7 @@ html, body {
 
 .navBar li a {
     display: block;
-    color: #000;
+    color: white;
     padding: 8px 16px;
     text-decoration: none;
     border-radius: 2px;
@@ -43,22 +43,22 @@ html, body {
 
 .navBar li a.active {
     background-color: #4CAF50;
-    color: white;
+    color: #111;
 }
 
 .navBar li a:hover:not(.active){
-    background-color: #555;
+    background-color: #111;
     color: white;
 }
 
 /*Stylesheet for canvas*/
 /*------------------------------------------------*/
 .canvas {
-    background-color: rgba(255,192,203,.3);
+    background-color: rgba(255,192,203,.1);
     position: absolute;
     top: 0;
-    left: 12%;
-    width: 87%;
+    left: 15%;
+    width: 85%;
     height: 100%;
     margin: 5px;
 }
@@ -87,7 +87,7 @@ html, body {
     left: 57.5%;
     width: 40%;
     height: 80%;
-    padding: 5px;
+    padding: 20px;
     background-color: rgba(240,248,255,.5);
     border: 2px solid grey;
     border-radius: 4px;
@@ -107,7 +107,7 @@ input[type=text] {
 button {
     width: 20%;
     padding: 10px;
-    background: #2196F3;
+    background: #333;
     color: white;
     font-size: 17px;
     border: 1px solid grey;
@@ -116,5 +116,5 @@ button {
 }
 
 button:hover {
-    background: #0b7dda;
+    background: #111;
 }

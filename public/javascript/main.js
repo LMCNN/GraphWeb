@@ -90,7 +90,7 @@ $(document).ready(function () {
             $.ajax({
                 type: 'GET',
                 url: '/describe?id=' + currGraph,
-                dataType: 'text',
+                dataType: 'json',
                 success: showMessage,
                 error: function(xhr) {
                     alert('error');
@@ -100,8 +100,28 @@ $(document).ready(function () {
     }
 
     function showMessage(msg) {
-        alert(msg);
-        // $('#msg').append('<a>' + msg + '</a>');
+        // console.log(msg);
+        let graph = msg;
+        $('#msg').append('<ul id="msgRoot">');
+        for (let key in graph) {
+            console.log(key);
+            $('#msgRoot').append('<a> ' + key + ' </a>');
+            if (graph.hasOwnProperty(key)) {
+                // console.log(key, graph[key]);
+                let temp = graph[key];
+                for (let key2 in temp){
+                    console.log(key2);
+                    $('#msgRoot').append('<a> ' + key2 + ' </a>');
+                    // console.log(temp[key2]);
+                    temp[key2].forEach(function (vertex) {
+                        console.log(vertex);
+                        $('#msgRoot').append('<a> ' + vertex + ' </a>');
+                    });
+                    $('#msgRoot').append('<br>');
+                }
+            }
+        }
+        $('#msg').append('</ul>');
     }
 });
 
