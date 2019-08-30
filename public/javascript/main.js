@@ -21,14 +21,14 @@ $(document).ready(function () {
     function renderNavBar(data){
         for (let i = 0; i < data; i++){
             let name = 'Graph ' + (i + 1);
-            let result = '<li><a href="#" class="navBar" id="' + i + '">' + name + '</a></li>';
+            let result = '<li><a href="#" class="navBtn" id="' + i + '">' + name + '</a></li>';
             $('#navBar').append(result);
         }
     }
 
     //change the graph need to load
     function switchGraph() {
-        $('.navBar').click(function(event) {
+        $('.navBtn').click(function(event) {
             //select graph to render
             event.preventDefault();
             $.ajax({
@@ -66,7 +66,7 @@ $(document).ready(function () {
         console.log(graph);
 
         $( "#container" ).remove();
-        $('<div id="container"></div>').insertAfter("#content");
+        $(".graph").append('<div id="container"></div>');
 
         // Instantiate sigma:
         s = new sigma({

@@ -15,22 +15,27 @@
     
     <head>
         <title>Test Graph</title>
-        <link rel="stylesheet" type="text/css" href="stylesheets/graph.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
     </head>
 
     <body>
-        <ul id='navBar'>
-            <!-- The Search Bar -->
-            <input id="searchVal" type="text" placeholder="Search.." name="search">
-            <button id="searchBtn"><i class="fa fa-search"></i></button>
-            <br><br>
-        </ul>
-
-        <div id="content">
-            <button id="describeBtn">Describe this graph</button>
-            <div id="container"></div>
+        <div class='navBar'>
+            <ul id="navBar">
+                <!-- The Search Bar -->
+                <input id="searchVal" type="text" placeholder="Search.." name="search">
+                <button class="btn" id="searchBtn"><i class="fa fa-search"></i></button>
+            </ul>
         </div>
 
-        <div id="msg"></div>
+        <div class="canvas">
+
+            <div class="graph">
+                <div id="container"></div>
+            </div>
+
+            <div class="msgBox" id="msg">
+                <a>Message</a><br>
+            </div>
+        </div>
     </body>
 </html>
