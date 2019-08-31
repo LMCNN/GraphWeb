@@ -1,9 +1,11 @@
 $(document).ready(function () {
-    let s = new sigma(document.getElementById('container'));
+    let s = new sigma(document.getElementById('container')),
+        currGraph = 0;
 
+    //get the graph number from the server
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:3000/rendNav',
+        url: '/rendNav',
         dataType: 'json',
         success: function(response) {
             renderNavBar(response);
@@ -11,38 +13,62 @@ $(document).ready(function () {
         },
         error: function(xhr) {
             //Do Something to handle error
+            alert('nav bar render failed!');
         }
     });
 
+    //add graph link to html nav bar
     function renderNavBar(data){
         for (let i = 0; i < data; i++){
             let name = 'Graph ' + (i + 1);
-            let result = '<li><a href="#" class="navBar" id="' + i + '">' + name + '</a></li>';
+            let result = '<li><a href="#" class="navBtn" id="' + i + '">' + name + '</a></li>';
             $('#navBar').append(result);
         }
     }
 
+    //change the graph need to load
     function switchGraph() {
-        $('.navBar').click(function(event) {
+        $('.navBtn').click(function(event) {
+            currGraph =  $(this).attr('id');
+            //select graph to render
             event.preventDefault();
             $.ajax({
                 type: 'GET',
-                url: '/graph?id=' + $(this).attr('id'),
+                url: '/graph?id=' + currGraph,
                 dataType: 'json',
-                success: loadGraph,
+                success: renderGraph,
                 error: function(xhr) {
                     //Do Something to handle error
+                    alert('Select graph failed!');
                 }
             });
+
             return false; // for good measure
+        });
+
+        //search graph to render
+        $('#searchBtn').click(function () {
+            let currGraph = $('#searchVal').val();
+            $.ajax({
+                type: 'GET',
+                url: '/graph?id=' + currGraph,
+                dataType: 'json',
+                success: renderGraph,
+                error: function(xhr) {
+                    alert('Invalid input!\n' +
+                        'Please enter a graph number.');
+                }
+            });
         });
     }
 
-    function loadGraph(graph) {
-        console.log(graph);
+    //using the sigma js to render the graph which received from the server
+    function renderGraph(graph) {
+        currGraph = graph.gid;
+        // console.log(graph);
 
         $( "#container" ).remove();
-        $('<div id="container"></div>').insertAfter("#navBar");
+        $(".graph").append('<div id="container"></div>');
 
         // Instantiate sigma:
         s = new sigma({
@@ -59,6 +85,31 @@ $(document).ready(function () {
 
         // Start the ForceAtlas2 algorithm:
         s.startForceAtlas2({worker: true, barnesHutOptimize: false});
+
+        describe(currGraph);
+    }
+
+    //select graph to describe
+    function describe(currGraph){
+        $.ajax({
+            type: 'GET',
+            url: '/describe?id=' + currGraph,
+            dataType: 'text',
+            success: showMessage,
+            error: function(xhr) {
+                alert('error');
+            }
+        });
+    }
+
+    //show the message in the message part
+    function showMessage(msg) {
+        let strings = msg.split('\n');
+        $('#msgRoot').remove();
+        $('#msg').append('<div id="msgRoot"></div>');
+        strings.forEach(function (line) {
+            $('#msgRoot').append('<a> ' + line + ' </a><br>')
+        });
     }
 });
 

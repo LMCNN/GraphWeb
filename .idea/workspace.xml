@@ -12,6 +12,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -22,8 +23,10 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/javascript/lib/plugins" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/Graph2NL" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -33,13 +36,15 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mingchi Li\Documents\GitHub\GraphWeb\public\Graph2NL" />
+      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\data" />
+      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public" />
       <recent name="C:\Users\Mingchi Li\Documents\GitHub\GraphWeb\public\javascript\lib\plugins" />
       <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public" />
-      <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public\javascripts" />
-      <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public\html" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public" />
@@ -72,6 +77,15 @@
       <workItem from="1566369561385" duration="7476000" />
       <workItem from="1566961257872" duration="24377000" />
       <workItem from="1566996217254" duration="8000" />
+      <workItem from="1567002403357" duration="2703000" />
+      <workItem from="1566901746647" duration="1513000" />
+      <workItem from="1566903467209" duration="18000" />
+      <workItem from="1567147262047" duration="12265000" />
+      <workItem from="1567164156125" duration="2931000" />
+      <workItem from="1567172447179" duration="13000" />
+      <workItem from="1567221243521" duration="1574000" />
+      <workItem from="1567222862328" duration="808000" />
+      <workItem from="1567252009856" duration="3662000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,8 @@
 const fs = require('fs');
 const gexf = require('gexf');
+const exec = require('child_process').exec;
 
+//this module parse the graph files from a folder
 module.exports = {
   parseGEXF: function () {
       const colors = [
@@ -19,6 +21,8 @@ module.exports = {
           let gexf_file = fs.readFileSync('./public/data/' + files[i], 'utf-8');
           // Parsing it
           let graph = gexf.parse(gexf_file);
+
+          graph.filename = files[i];
 
           let j,
               N = 100,
@@ -42,6 +46,11 @@ module.exports = {
               currEdge.type = 'curvedArrow';
               currEdge.color = '#ccc';
           }
+          // exec(commandStr + files[i], function(error, stdout, stderr) {
+          //     console.log(stdout);
+          //     let strings = stdout.split('\n');
+          //     graph.description = description;
+          // });
 
           graphs.push(graph);
       }
