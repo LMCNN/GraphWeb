@@ -40,6 +40,7 @@ $(document).ready(function () {
                     //Do Something to handle error
                 }
             });
+
             return false; // for good measure
         });
 
@@ -62,8 +63,8 @@ $(document).ready(function () {
     //using the sigma js to render the graph which received from server
     function renderGraph(graph) {
         currGraph = graph.gid;
-        console.log(currGraph);
-        console.log(graph);
+        // console.log(currGraph);
+        // console.log(graph);
 
         $( "#container" ).remove();
         $(".graph").append('<div id="container"></div>');
@@ -85,12 +86,13 @@ $(document).ready(function () {
         s.startForceAtlas2({worker: true, barnesHutOptimize: false});
     }
 
+    //select graph to describe
     function describe(){
-        $('#describeBtn').click(function () {
+        $('.navBtn').click(function () {
             $.ajax({
                 type: 'GET',
-                url: '/describe?id=' + currGraph,
-                dataType: 'json',
+                url: '/describe?id=' + $(this).attr('id'),
+                dataType: 'text',
                 success: showMessage,
                 error: function(xhr) {
                     alert('error');
@@ -99,29 +101,16 @@ $(document).ready(function () {
         })
     }
 
+    //show the message in the message part
     function showMessage(msg) {
         // console.log(msg);
-        let graph = msg;
-        $('#msg').append('<ul id="msgRoot">');
-        for (let key in graph) {
-            console.log(key);
-            $('#msgRoot').append('<a> ' + key + ' </a>');
-            if (graph.hasOwnProperty(key)) {
-                // console.log(key, graph[key]);
-                let temp = graph[key];
-                for (let key2 in temp){
-                    console.log(key2);
-                    $('#msgRoot').append('<a> ' + key2 + ' </a>');
-                    // console.log(temp[key2]);
-                    temp[key2].forEach(function (vertex) {
-                        console.log(vertex);
-                        $('#msgRoot').append('<a> ' + vertex + ' </a>');
-                    });
-                    $('#msgRoot').append('<br>');
-                }
-            }
-        }
-        $('#msg').append('</ul>');
+        let strings = msg.split('\n');
+        // console.log(strings);
+        $('#msgRoot').remove();
+        $('#msg').append('<div id="msgRoot"></div>');
+        strings.forEach(function (line) {
+            $('#msgRoot').append('<a> ' + line + ' </a><br>')
+        });
     }
 });
 

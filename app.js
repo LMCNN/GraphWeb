@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //parser graphs from data folder and convert them to a object array
 let graphs = parser.parseGEXF(),
-    commandStr = 'java -jar public/Graph2NL/Graph2NL.jar -j -g public/data/';
+    commandStr = 'java -jar public/Graph2NL/Graph2NL.jar -g public/data/';
 
 //load the main page
 app.get('/', function(req, res) {
