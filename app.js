@@ -29,6 +29,7 @@ app.get('/graph', function (req, res) {
     let g = {};
     g.nodes = graphs[graphId].nodes;
     g.edges = graphs[graphId].edges;
+    g.description = graphs[graphId].description;
     g.gid = graphId;
 
     res.status(200);

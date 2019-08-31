@@ -10,10 +10,10 @@ $(document).ready(function () {
         success: function(response) {
             renderNavBar(response);
             switchGraph();
-            describe();
         },
         error: function(xhr) {
             //Do Something to handle error
+            alert('nav bar render failed!');
         }
     });
 
@@ -29,11 +29,12 @@ $(document).ready(function () {
     //change the graph need to load
     function switchGraph() {
         $('.navBtn').click(function(event) {
+            currGraph =  $(this).attr('id');
             //select graph to render
             event.preventDefault();
             $.ajax({
                 type: 'GET',
-                url: '/graph?id=' + $(this).attr('id'),
+                url: '/graph?id=' + currGraph,
                 dataType: 'json',
                 success: renderGraph,
                 error: function(xhr) {
@@ -46,10 +47,10 @@ $(document).ready(function () {
 
         //search graph to render
         $('#searchBtn').click(function () {
-            let v = $('#searchVal').val();
+            let currGraph = $('#searchVal').val();
             $.ajax({
                 type: 'GET',
-                url: '/graph?id=' + v,
+                url: '/graph?id=' + currGraph,
                 dataType: 'json',
                 success: renderGraph,
                 error: function(xhr) {
@@ -60,10 +61,9 @@ $(document).ready(function () {
         });
     }
 
-    //using the sigma js to render the graph which received from server
+    //using the sigma js to render the graph which received from the server
     function renderGraph(graph) {
         currGraph = graph.gid;
-        // console.log(currGraph);
         // console.log(graph);
 
         $( "#container" ).remove();
@@ -84,28 +84,26 @@ $(document).ready(function () {
 
         // Start the ForceAtlas2 algorithm:
         s.startForceAtlas2({worker: true, barnesHutOptimize: false});
+
+        describe(currGraph);
     }
 
     //select graph to describe
-    function describe(){
-        $('.navBtn').click(function () {
-            $.ajax({
-                type: 'GET',
-                url: '/describe?id=' + $(this).attr('id'),
-                dataType: 'text',
-                success: showMessage,
-                error: function(xhr) {
-                    alert('error');
-                }
-            });
-        })
+    function describe(currGraph){
+        $.ajax({
+            type: 'GET',
+            url: '/describe?id=' + currGraph,
+            dataType: 'text',
+            success: showMessage,
+            error: function(xhr) {
+                alert('error');
+            }
+        });
     }
 
     //show the message in the message part
     function showMessage(msg) {
-        // console.log(msg);
         let strings = msg.split('\n');
-        // console.log(strings);
         $('#msgRoot').remove();
         $('#msg').append('<div id="msgRoot"></div>');
         strings.forEach(function (line) {

@@ -21,6 +21,7 @@ module.exports = {
           let gexf_file = fs.readFileSync('./public/data/' + files[i], 'utf-8');
           // Parsing it
           let graph = gexf.parse(gexf_file);
+
           graph.filename = files[i];
 
           let j,
@@ -45,6 +46,11 @@ module.exports = {
               currEdge.type = 'curvedArrow';
               currEdge.color = '#ccc';
           }
+          // exec(commandStr + files[i], function(error, stdout, stderr) {
+          //     console.log(stdout);
+          //     let strings = stdout.split('\n');
+          //     graph.description = description;
+          // });
 
           graphs.push(graph);
       }
