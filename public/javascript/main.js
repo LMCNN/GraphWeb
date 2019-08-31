@@ -39,6 +39,7 @@ $(document).ready(function () {
                 success: renderGraph,
                 error: function(xhr) {
                     //Do Something to handle error
+                    alert('Select graph failed!');
                 }
             });
 
