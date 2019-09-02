@@ -19,8 +19,8 @@ $(document).ready(function () {
 
     //add graph link to html nav bar
     function renderNavBar(data){
-        for (let i = 0; i < data; i++){
-            let name = 'Graph ' + (i + 1);
+        for (let i = 0; i < data.length; i++){
+            let name = data[i];
             let result = '<li><a href="#" class="navBtn" id="' + i + '">' + name + '</a></li>';
             $('#navBar').append(result);
         }
@@ -65,7 +65,8 @@ $(document).ready(function () {
     //using the sigma js to render the graph which received from the server
     function renderGraph(graph) {
         currGraph = graph.gid;
-        // console.log(graph);
+        console.log(graph);
+        describe(currGraph);
 
         $( "#container" ).remove();
         $(".graph").append('<div id="container"></div>');
@@ -78,15 +79,18 @@ $(document).ready(function () {
                 type: 'canvas'
             },
             settings: {
-                edgeLabelSize: 'proportional',
+                // edgeLabelSize: 'proportional',
                 sideMargin: 1
             }
         });
 
+        // s.bind('overNode', function(event) {
+        //     console.log(event.data.node.attributes);
+        // });
+
         // Start the ForceAtlas2 algorithm:
         s.startForceAtlas2({worker: true, barnesHutOptimize: false});
-
-        describe(currGraph);
+        // s.stopForceAtlas2();
     }
 
     //select graph to describe
@@ -108,7 +112,7 @@ $(document).ready(function () {
         $('#msgRoot').remove();
         $('#msg').append('<div id="msgRoot"></div>');
         strings.forEach(function (line) {
-            $('#msgRoot').append('<a> ' + line + ' </a><br>')
+            $('#msgRoot').append('<a> ' + line + ' </a><br>');
         });
     }
 });

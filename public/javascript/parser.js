@@ -1,6 +1,6 @@
 const fs = require('fs');
 const gexf = require('gexf');
-const exec = require('child_process').exec;
+// const exec = require('child_process').exec;
 
 //this module parse the graph files from a folder
 module.exports = {
