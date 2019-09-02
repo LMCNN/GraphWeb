@@ -79,7 +79,10 @@ $(document).ready(function () {
                 type: 'canvas'
             },
             settings: {
-                // edgeLabelSize: 'proportional',
+                minEdgeSize: 5,
+                minArrowSize: 5,
+                edgeHoverSizeRatio: 3,
+                enableEdgeHovering: true,
                 sideMargin: 1
             }
         });
@@ -100,6 +103,11 @@ $(document).ready(function () {
             }
 
             alert(result);
+        });
+
+        s.bind('clickEdge', function(e) {
+            console.log(e.data.edge.label);
+            console.log(e.data.edge.attributes);
         });
 
         // Start the ForceAtlas2 algorithm:

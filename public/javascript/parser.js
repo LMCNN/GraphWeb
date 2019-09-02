@@ -55,7 +55,9 @@ module.exports = {
           for (j = 0; j < graph.edges.length; j++){
               let currEdge = graph.edges[j];
               currEdge.type = 'curvedArrow';
-              currEdge.color = '#ccc';
+              currEdge.color = '#373737';
+              currEdge.size = 5;
+              currEdge.count = j;
           }
 
           graphs.push(graph);
