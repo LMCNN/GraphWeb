@@ -1,6 +1,7 @@
 $(document).ready(function () {
     let s = new sigma(document.getElementById('container')),
-        currGraph = 0;
+        currId = 0,
+        g = {};
 
     //get the graph number from the server
     $.ajax({
@@ -29,12 +30,12 @@ $(document).ready(function () {
     //change the graph need to load
     function switchGraph() {
         $('.navBtn').click(function(event) {
-            currGraph =  $(this).attr('id');
+            currId =  $(this).attr('id');
             //select graph to render
             event.preventDefault();
             $.ajax({
                 type: 'GET',
-                url: '/graph?id=' + currGraph,
+                url: '/graph?id=' + currId,
                 dataType: 'json',
                 success: renderGraph,
                 error: function(xhr) {
@@ -64,9 +65,10 @@ $(document).ready(function () {
 
     //using the sigma js to render the graph which received from the server
     function renderGraph(graph) {
-        currGraph = graph.gid;
-        console.log(graph);
-        describe(currGraph);
+        g = graph;
+        currId = graph.gid;
+        // console.log(graph);
+        describe(currId);
 
         $( "#container" ).remove();
         $(".graph").append('<div id="container"></div>');
@@ -91,12 +93,12 @@ $(document).ready(function () {
             let count = 0,
                 result = "",
                 attr = event.data.node.attributes;
-
+            // console.log(attr);
             while (true) {
                 if (typeof attr[count] === 'undefined') break;
                 else {
-                    result += attr[count];
-                    console.log(attr[count]);
+                    result += g.model.node[count].title + ': ' + attr[count];
+                    // console.log(attr[count]);
                     result += '\n';
                     count++;
                 }
@@ -106,8 +108,21 @@ $(document).ready(function () {
         });
 
         s.bind('clickEdge', function(e) {
-            console.log(e.data.edge.label);
-            console.log(e.data.edge.attributes);
+            let count = 0,
+                result = "",
+                attr = e.data.edge.attributes;
+            // console.log(attr);
+            while (true) {
+                if (typeof attr[count] === 'undefined') break;
+                else {
+                    result += g.model.edge[count].title + ': ' + attr[count];
+                    // console.log(attr[count]);
+                    result += '\n';
+                    count++;
+                }
+            }
+
+            alert(result);
         });
 
         // Start the ForceAtlas2 algorithm:
