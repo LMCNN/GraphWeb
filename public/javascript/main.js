@@ -84,13 +84,27 @@ $(document).ready(function () {
             }
         });
 
-        // s.bind('overNode', function(event) {
-        //     console.log(event.data.node.attributes);
-        // });
+        s.bind('clickNode', function(event) {
+            let count = 0,
+                result = "",
+                attr = event.data.node.attributes;
+
+            while (true) {
+                if (typeof attr[count] === 'undefined') break;
+                else {
+                    result += attr[count];
+                    console.log(attr[count]);
+                    result += '\n';
+                    count++;
+                }
+            }
+
+            alert(result);
+        });
 
         // Start the ForceAtlas2 algorithm:
         s.startForceAtlas2({worker: true, barnesHutOptimize: false});
-        // s.stopForceAtlas2();
+        setTimeout(function() { s.stopForceAtlas2(); }, 250);
     }
 
     //select graph to describe

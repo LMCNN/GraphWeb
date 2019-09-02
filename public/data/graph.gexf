@@ -10,15 +10,17 @@
    <attribute id="1" title="opp_head" type="string"/>
    <attribute id="2" title="opp_len" type="string"/>
    <attribute id="3" title="wa_type" type="string"/>
-   <attribute id="4" title="start_time" type="string"/>
-   <attribute id="5" title="in_out" type="string"/>
-   <attribute id="6" title="call_type" type="string"/>
-   <attribute id="7" title="call_dura" type="string"/>
-   <attribute id="8" title="up_flow" type="string"/>
-   <attribute id="9" title="date" type="string"/>
-   <attribute id="10" title="down_flow" type="string"/>
-   <attribute id="11" title="visit_dura" type="string"/>
-   <attribute id="12" title="visit_cnt" type="string"/>
+  </attributes>
+  <attributes class="edge" mode="static">
+   <attribute id="0" title="start_time" type="string"/>
+   <attribute id="1" title="in_out" type="string"/>
+   <attribute id="2" title="call_type" type="string"/>
+   <attribute id="3" title="call_dura" type="string"/>
+   <attribute id="4" title="up_flow" type="string"/>
+   <attribute id="5" title="date" type="string"/>
+   <attribute id="6" title="down_flow" type="string"/>
+   <attribute id="7" title="visit_dura" type="string"/>
+   <attribute id="8" title="visit_cnt" type="string"/>
   </attributes>
   <nodes count="6">
    <node id="0" label="User">
@@ -61,50 +63,50 @@
   <edges count="6">
    <edge id="0" source="0" target="100" type="directed" label="CALL" weight="1.0">
     <attvalues>
-     <attvalue for="4" value="12"/>
-     <attvalue for="5" value="0"/>
-     <attvalue for="6" value="1"/>
-     <attvalue for="7" value="29"/>
+     <attvalue for="0" value="12"/>
+     <attvalue for="1" value="0"/>
+     <attvalue for="2" value="1"/>
+     <attvalue for="3" value="29"/>
     </attvalues>
    </edge>
    <edge id="1" source="0" target="101" type="directed" label="CALL" weight="1.0">
     <attvalues>
-     <attvalue for="4" value="14"/>
-     <attvalue for="5" value="1"/>
-     <attvalue for="6" value="1"/>
-     <attvalue for="7" value="120"/>
+     <attvalue for="0" value="14"/>
+     <attvalue for="1" value="1"/>
+     <attvalue for="2" value="1"/>
+     <attvalue for="3" value="120"/>
     </attvalues>
    </edge>
    <edge id="3" source="0" target="5760" type="directed" label="VISIT" weight="1.0">
     <attvalues>
-     <attvalue for="8" value="100"/>
-     <attvalue for="9" value="01"/>
-     <attvalue for="10" value="500"/>
-     <attvalue for="11" value="300"/>
-     <attvalue for="12" value="2"/>
+     <attvalue for="4" value="100"/>
+     <attvalue for="5" value="01"/>
+     <attvalue for="6" value="500"/>
+     <attvalue for="7" value="300"/>
+     <attvalue for="8" value="2"/>
     </attvalues>
    </edge>
    <edge id="4" source="0" target="5761" type="directed" label="VISIT" weight="1.0">
     <attvalues>
-     <attvalue for="8" value="100"/>
-     <attvalue for="9" value="02"/>
-     <attvalue for="10" value="400"/>
-     <attvalue for="11" value="400"/>
-     <attvalue for="12" value="4"/>
+     <attvalue for="4" value="100"/>
+     <attvalue for="5" value="02"/>
+     <attvalue for="6" value="400"/>
+     <attvalue for="7" value="400"/>
+     <attvalue for="8" value="4"/>
     </attvalues>
    </edge>
    <edge id="2" source="1" target="101" type="directed" label="CALL" weight="1.0">
     <attvalues>
-     <attvalue for="4" value="14"/>
-     <attvalue for="5" value="1"/>
-     <attvalue for="6" value="1"/>
-     <attvalue for="7" value="63"/>
+     <attvalue for="0" value="14"/>
+     <attvalue for="1" value="1"/>
+     <attvalue for="2" value="1"/>
+     <attvalue for="3" value="63"/>
     </attvalues>
    </edge>
    <edge id="5" source="1" target="101" type="directed" label="SEND MESSAGE" weight="1.0">
     <attvalues>
-     <attvalue for="4" value="12"/>
-     <attvalue for="5" value="0"/>
+     <attvalue for="0" value="12"/>
+     <attvalue for="1" value="0"/>
     </attvalues>
    </edge>
   </edges>
