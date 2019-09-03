@@ -93,7 +93,7 @@ $(document).ready(function () {
             let count = 0,
                 result = "",
                 attr = event.data.node.attributes;
-            // console.log(attr);
+            console.log(event.data.node);
             while (true) {
                 if (typeof attr[count] === 'undefined') break;
                 else {
@@ -103,7 +103,6 @@ $(document).ready(function () {
                     count++;
                 }
             }
-
             alert(result);
         });
 
@@ -153,4 +152,3 @@ $(document).ready(function () {
         });
     }
 });
-
