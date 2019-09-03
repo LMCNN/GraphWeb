@@ -106,24 +106,6 @@ $(document).ready(function () {
             alert(result);
         });
 
-        s.bind('clickEdge', function(e) {
-            let count = 0,
-                result = "",
-                attr = e.data.edge.attributes;
-            // console.log(attr);
-            while (true) {
-                if (typeof attr[count] === 'undefined') break;
-                else {
-                    result += g.model.edge[count].title + ': ' + attr[count];
-                    // console.log(attr[count]);
-                    result += '\n';
-                    count++;
-                }
-            }
-
-            alert(result);
-        });
-
         // Start the ForceAtlas2 algorithm:
         s.startForceAtlas2({worker: true, barnesHutOptimize: false});
         setTimeout(function() { s.stopForceAtlas2(); }, 250);
@@ -151,4 +133,19 @@ $(document).ready(function () {
             $('#msgRoot').append('<a> ' + line + ' </a><br>');
         });
     }
+
+    //get the json file from the server
+    $('#json').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/json?id=' + currId,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+            },
+            error: function(xhr) {
+                alert('Get JSON failed!');
+            }
+        });
+    });
 });

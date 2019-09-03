@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="520b8718-f9e6-49fa-9821-ad3ca19d961c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Graph2NL/Graph2NL.jar" beforeDir="false" afterPath="$PROJECT_DIR$/public/Graph2NL/Graph2NL.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/graph.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/graph.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/javascript/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascript/main.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +31,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/Graph2NL" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -42,17 +45,17 @@
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mingchi Li\Documents\GitHub\GraphWeb\public\Graph2NL" />
+      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\data" />
+      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public" />
+      <recent name="C:\Users\Mingchi Li\Documents\GitHub\GraphWeb\public\javascript\lib\plugins" />
+      <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public" />
       <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public\views" />
       <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public\stylesheets" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\data" />
-      <recent name="C:\Users\Mingchi Li\Documents\GitHub\GraphWeb\public\Graph2NL" />
-      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public" />
-      <recent name="C:\Users\Mingchi Li\Documents\GitHub\GraphWeb\public\javascript\lib\plugins" />
-      <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -91,6 +94,7 @@
       <workItem from="1567252009856" duration="3662000" />
       <workItem from="1567146544029" duration="12901000" />
       <workItem from="1567413506689" duration="8911000" />
+      <workItem from="1567508241322" duration="4198000" />
     </task>
     <servers />
   </component>
