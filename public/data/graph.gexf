@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz" version="1.2">
+ <meta lastmodifieddate="2019-09-02">
+  <creator>h1112.buaa.com</creator>
+  <description>graph exchange file</description>
+ </meta>
+ <graph defaultedgetype="directed" idtype="string" mode="static">
+  <attributes class="node" mode="static">
+   <attribute id="0" title="name" type="string"/>
+   <attribute id="1" title="opp_head" type="string"/>
+   <attribute id="2" title="opp_len" type="string"/>
+   <attribute id="3" title="wa_type" type="string"/>
+  </attributes>
+  <attributes class="edge" mode="static">
+   <attribute id="0" title="start_time" type="string"/>
+   <attribute id="1" title="in_out" type="string"/>
+   <attribute id="2" title="call_type" type="string"/>
+   <attribute id="3" title="call_dura" type="string"/>
+   <attribute id="4" title="up_flow" type="string"/>
+   <attribute id="5" title="date" type="string"/>
+   <attribute id="6" title="down_flow" type="string"/>
+   <attribute id="7" title="visit_dura" type="string"/>
+   <attribute id="8" title="visit_cnt" type="string"/>
+  </attributes>
+  <nodes count="6">
+   <node id="0" label="User">
+    <attvalues>
+     <attvalue for="0" value="u0001"/>
+    </attvalues>
+   </node>
+   <node id="1" label="User">
+    <attvalues>
+     <attvalue for="0" value="u0002"/>
+    </attvalues>
+   </node>
+   <node id="100" label="Phone">
+    <attvalues>
+     <attvalue for="0" value="9808BB994AB33432DE15AD5D560A49AE"/>
+     <attvalue for="1" value="137"/>
+     <attvalue for="2" value="11"/>
+    </attvalues>
+   </node>
+   <node id="101" label="Phone">
+    <attvalues>
+     <attvalue for="0" value="0129FA4AF9C1907F712D0BCD562E864A"/>
+     <attvalue for="1" value="51"/>
+     <attvalue for="2" value="12"/>
+    </attvalues>
+   </node>
+   <node id="5760" label="Web">
+    <attvalues>
+     <attvalue for="0" value="155导航_0"/>
+     <attvalue for="3" value="0"/>
+    </attvalues>
+   </node>
+   <node id="5761" label="Web">
+    <attvalues>
+     <attvalue for="0" value="360借条_1"/>
+     <attvalue for="3" value="1"/>
+    </attvalues>
+   </node>
+  </nodes>
+  <edges count="6">
+   <edge id="0" source="0" target="100" type="directed" label="CALL" weight="1.0">
+    <attvalues>
+     <attvalue for="0" value="12"/>
+     <attvalue for="1" value="0"/>
+     <attvalue for="2" value="1"/>
+     <attvalue for="3" value="29"/>
+    </attvalues>
+   </edge>
+   <edge id="1" source="0" target="101" type="directed" label="CALL" weight="1.0">
+    <attvalues>
+     <attvalue for="0" value="14"/>
+     <attvalue for="1" value="1"/>
+     <attvalue for="2" value="1"/>
+     <attvalue for="3" value="120"/>
+    </attvalues>
+   </edge>
+   <edge id="3" source="0" target="5760" type="directed" label="VISIT" weight="1.0">
+    <attvalues>
+     <attvalue for="4" value="100"/>
+     <attvalue for="5" value="01"/>
+     <attvalue for="6" value="500"/>
+     <attvalue for="7" value="300"/>
+     <attvalue for="8" value="2"/>
+    </attvalues>
+   </edge>
+   <edge id="4" source="0" target="5761" type="directed" label="VISIT" weight="1.0">
+    <attvalues>
+     <attvalue for="4" value="100"/>
+     <attvalue for="5" value="02"/>
+     <attvalue for="6" value="400"/>
+     <attvalue for="7" value="400"/>
+     <attvalue for="8" value="4"/>
+    </attvalues>
+   </edge>
+   <edge id="2" source="1" target="101" type="directed" label="CALL" weight="1.0">
+    <attvalues>
+     <attvalue for="0" value="14"/>
+     <attvalue for="1" value="1"/>
+     <attvalue for="2" value="1"/>
+     <attvalue for="3" value="63"/>
+    </attvalues>
+   </edge>
+   <edge id="5" source="1" target="101" type="directed" label="SEND MESSAGE" weight="1.0">
+    <attvalues>
+     <attvalue for="0" value="12"/>
+     <attvalue for="1" value="0"/>
+    </attvalues>
+   </edge>
+  </edges>
+ </graph>
+</gexf>

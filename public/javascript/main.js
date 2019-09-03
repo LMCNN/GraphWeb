@@ -1,6 +1,7 @@
 $(document).ready(function () {
     let s = new sigma(document.getElementById('container')),
-        currGraph = 0;
+        currId = 0,
+        g = {};
 
     //get the graph number from the server
     $.ajax({
@@ -19,8 +20,8 @@ $(document).ready(function () {
 
     //add graph link to html nav bar
     function renderNavBar(data){
-        for (let i = 0; i < data; i++){
-            let name = 'Graph ' + (i + 1);
+        for (let i = 0; i < data.length; i++){
+            let name = data[i];
             let result = '<li><a href="#" class="navBtn" id="' + i + '">' + name + '</a></li>';
             $('#navBar').append(result);
         }
@@ -29,12 +30,12 @@ $(document).ready(function () {
     //change the graph need to load
     function switchGraph() {
         $('.navBtn').click(function(event) {
-            currGraph =  $(this).attr('id');
+            currId =  $(this).attr('id');
             //select graph to render
             event.preventDefault();
             $.ajax({
                 type: 'GET',
-                url: '/graph?id=' + currGraph,
+                url: '/graph?id=' + currId,
                 dataType: 'json',
                 success: renderGraph,
                 error: function(xhr) {
@@ -64,8 +65,10 @@ $(document).ready(function () {
 
     //using the sigma js to render the graph which received from the server
     function renderGraph(graph) {
-        currGraph = graph.gid;
+        g = graph;
+        currId = graph.gid;
         // console.log(graph);
+        describe(currId);
 
         $( "#container" ).remove();
         $(".graph").append('<div id="container"></div>');
@@ -78,15 +81,53 @@ $(document).ready(function () {
                 type: 'canvas'
             },
             settings: {
-                edgeLabelSize: 'proportional',
+                minEdgeSize: 5,
+                minArrowSize: 5,
+                edgeHoverSizeRatio: 3,
+                enableEdgeHovering: true,
                 sideMargin: 1
             }
         });
 
+        s.bind('clickNode', function(event) {
+            let count = 0,
+                result = "",
+                attr = event.data.node.attributes;
+            // console.log(attr);
+            while (true) {
+                if (typeof attr[count] === 'undefined') break;
+                else {
+                    result += g.model.node[count].title + ': ' + attr[count];
+                    // console.log(attr[count]);
+                    result += '\n';
+                    count++;
+                }
+            }
+
+            alert(result);
+        });
+
+        s.bind('clickEdge', function(e) {
+            let count = 0,
+                result = "",
+                attr = e.data.edge.attributes;
+            // console.log(attr);
+            while (true) {
+                if (typeof attr[count] === 'undefined') break;
+                else {
+                    result += g.model.edge[count].title + ': ' + attr[count];
+                    // console.log(attr[count]);
+                    result += '\n';
+                    count++;
+                }
+            }
+
+            alert(result);
+        });
+
         // Start the ForceAtlas2 algorithm:
         s.startForceAtlas2({worker: true, barnesHutOptimize: false});
-
-        describe(currGraph);
+        setTimeout(function() { s.stopForceAtlas2(); }, 250);
     }
 
     //select graph to describe
@@ -108,7 +149,7 @@ $(document).ready(function () {
         $('#msgRoot').remove();
         $('#msg').append('<div id="msgRoot"></div>');
         strings.forEach(function (line) {
-            $('#msgRoot').append('<a> ' + line + ' </a><br>')
+            $('#msgRoot').append('<a> ' + line + ' </a><br>');
         });
     }
 });

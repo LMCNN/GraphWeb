@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //parser graphs from data folder and convert them to a object array
 let graphs = parser.parseGEXF(),
-    commandStr = 'java -jar public/Graph2NL/Graph2NL.jar -g public/data/';
+    commandStr = 'java -Dfile.encoding=utf-8 -jar public/Graph2NL/Graph2NL.jar -g public/data/';
 
 //load the main page
 app.get('/', function(req, res) {
@@ -18,9 +18,14 @@ app.get('/', function(req, res) {
 
 //load the nav bar
 app.get('/rendNav', function (req, res) {
+    let fileNames = [];
+    for (let i = 0; i < graphs.length; i++){
+        let currName = graphs[i].filename;
+        fileNames.push(currName.substring(0, currName.length - 5));
+    }
     res.status(200);
     res.setHeader('Content-type', 'text/plain');
-    return res.send(graphs.length.toString());
+    return res.send(fileNames);
 });
 
 //load the graph
@@ -29,7 +34,8 @@ app.get('/graph', function (req, res) {
     let g = {};
     g.nodes = graphs[graphId].nodes;
     g.edges = graphs[graphId].edges;
-    g.description = graphs[graphId].description;
+    g.model = graphs[graphId].model;
+    // g.description = graphs[graphId].description;
     g.gid = graphId;
 
     res.status(200);

@@ -1,6 +1,5 @@
 const fs = require('fs');
 const gexf = require('gexf');
-const exec = require('child_process').exec;
 
 //this module parse the graph files from a folder
 module.exports = {
@@ -28,7 +27,16 @@ module.exports = {
               N = 100,
               c = {},
               count = 0,
-              currLabel;
+              currLabel,
+              nodeNameIndex = 0;
+
+          for (let k = 0; k < graph.model.node.length; k++){
+              if (graph.model.node[k].title === 'name') {
+                  nodeNameIndex = k;
+                  break;
+              }
+          }
+
           for (j = 0; j < graph.nodes.length; j++) {
               let currNode = graph.nodes[j];
               currLabel = currNode.label;
@@ -36,6 +44,9 @@ module.exports = {
                   c[currLabel] = count;
                   count++;
               }
+
+              currNode.label += ':' + currNode.attributes[nodeNameIndex];
+
               currNode.x = 5 * Math.cos(2 * j * Math.PI / N);
               currNode.y = 5 * Math.sin(2 * j * Math.PI / N);
               currNode.size = 2;
@@ -44,13 +55,10 @@ module.exports = {
           for (j = 0; j < graph.edges.length; j++){
               let currEdge = graph.edges[j];
               currEdge.type = 'curvedArrow';
-              currEdge.color = '#ccc';
+              currEdge.color = '#373737';
+              currEdge.size = 5;
+              currEdge.count = j;
           }
-          // exec(commandStr + files[i], function(error, stdout, stderr) {
-          //     console.log(stdout);
-          //     let strings = stdout.split('\n');
-          //     graph.description = description;
-          // });
 
           graphs.push(graph);
       }
