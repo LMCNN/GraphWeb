@@ -96,8 +96,8 @@ html, body {
 
 /* Style the search field */
 input[type=text] {
-    width: 80%;
-    height: 45px;
+    width: 75%;
+    height: 40px;
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -107,8 +107,8 @@ input[type=text] {
 
 /* Style the submit button */
 input[type="submit"] {
-    width: 20%;
-    height: 45px;
+    width: 25%;
+    height: 40px;
     padding: 10px;
     background: #333;
     color: white;
