@@ -48,8 +48,9 @@ $(document).ready(function () {
         });
 
         //search graph to render
-        $('#searchBtn').click(function () {
-            let currGraph = $('#searchVal').val();
+        $("#searchForm").submit(function (e) {
+            e.preventDefault();
+            let currGraph = $("input:first").val();
             $.ajax({
                 type: 'GET',
                 url: '/graph?id=' + currGraph,

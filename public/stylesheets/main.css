@@ -96,26 +96,28 @@ html, body {
 
 /* Style the search field */
 input[type=text] {
+    width: 80%;
+    height: 45px;
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
     float: left;
-    width: 80%;
     background: #f1f1f1;
 }
 
 /* Style the submit button */
-button {
+input[type="submit"] {
     width: 20%;
+    height: 45px;
     padding: 10px;
     background: #333;
     color: white;
-    font-size: 17px;
+    font-size: 15px;
     border: 1px solid grey;
     border-left: none; /* Prevent double borders */
     cursor: pointer;
 }
 
-button:hover {
+input[type="submit"]:hover {
     background: #111;
 }
