@@ -116,7 +116,7 @@ $(document).ready(function () {
     function describe(currGraph){
         $.ajax({
             type: 'GET',
-            url: '/json?id=' + currGraph,
+            url: '/describe?id=' + currGraph,
             dataType: 'text',
             success: showMessage,
             error: function(xhr) {
@@ -126,27 +126,30 @@ $(document).ready(function () {
     }
 
     //show the message in the message part
-    function showMessage(data) {
+    function showMessage(msg) {
+        let strings = msg.split('\n');
         $('#msgRoot').remove();
         $('#msg').append('<div id="msgRoot"></div>');
-        $('#msgRoot').jsonView(data);
+        strings.forEach(function (line) {
+            $('#msgRoot').append('<a> ' + line + ' </a><br>');
+        });
     }
 
     //get the json file from the server
-    // $('#json').click(function () {
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: '/json?id=' + currId,
-    //         dataType: 'json',
-    //         success: function (data) {
-    //             console.log(data);
-    //             $('#msgRoot').remove();
-    //             $('#msg').append('<div id="msgRoot"></div>');
-    //             $('#msgRoot').jsonView(data);
-    //         },
-    //         error: function(xhr) {
-    //             alert('Get JSON failed!');
-    //         }
-    //     });
-    // });
+    $('#json').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/json?id=' + currId,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $('#msgRoot').remove();
+                $('#msg').append('<div id="msgRoot"></div>');
+                $('#msgRoot').jsonView(data);
+            },
+            error: function(xhr) {
+                alert('Get JSON failed!');
+            }
+        });
+    });
 });
