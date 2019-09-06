@@ -94,6 +94,12 @@ html, body {
     border-radius: 4px;
 }
 
+#msgRoot {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
 /* Style the search field */
 input[type=text] {
     width: 75%;

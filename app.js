@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //parser graphs from data folder and convert them to a object array
 let graphs = parser.parseGEXF(),
-    commandStr1 = 'java -Dfile.encoding=utf-8 -jar public/Graph2NL/Graph2NL.jar -g public/data/',
+    // commandStr1 = 'java -Dfile.encoding=utf-8 -jar public/Graph2NL/Graph2NL.jar -g public/data/',
     commandStr2 = 'java -Dfile.encoding=utf-8 -jar public/Graph2NL/Graph2NL.jar -j -g public/data/';
 
 //load the main page
@@ -40,21 +40,21 @@ app.get('/graph', function (req, res) {
     g.gid = graphId;
 
     res.status(200);
-    res.setHeader('Content-type', 'json/plain');
+    res.setHeader('Content-type', 'json/application');
     return res.send(g);
 });
 
-app.get('/describe', function (req, res) {
-    let graphId = req.query.id,
-        file = graphs[graphId].filename;
-
-    exec(commandStr1 + file, function(error, stdout, stderr) {
-        res.status(200);
-        res.setHeader('Content-type', 'text/plain');
-        // console.log(stdout);
-        return res.send(stdout);
-    });
-});
+// app.get('/describe', function (req, res) {
+//     let graphId = req.query.id,
+//         file = graphs[graphId].filename;
+//
+//     exec(commandStr1 + file, function(error, stdout, stderr) {
+//         res.status(200);
+//         res.setHeader('Content-type', 'text/plain');
+//         // console.log(stdout);
+//         return res.send(stdout);
+//     });
+// });
 
 app.get('/json', function (req, res) {
     let graphId = req.query.id,
@@ -62,7 +62,7 @@ app.get('/json', function (req, res) {
 
     exec(commandStr2 + file, function(error, stdout, stderr) {
         res.status(200);
-        res.setHeader('Content-type', 'json/plain');
+        res.setHeader('Content-type', 'json/application');
         return res.send(stdout);
     });
 });
