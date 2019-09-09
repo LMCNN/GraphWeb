@@ -9,8 +9,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //parser graphs from data folder and convert them to a object array
 let graphs = parser.parseGEXF(),
-    commandStr1 = 'java -Dfile.encoding=utf-8 -jar public/Graph2NL/Graph2NL.jar -g public/data/',
-    commandStr2 = 'java -Dfile.encoding=utf-8 -jar public/Graph2NL/Graph2NL.jar -j -g public/data/';
+    nlPath = path.join(__dirname, '/public/Graph2NL/Graph2NL.jar'),
+    filePath = path.join(__dirname, '/public/data/'),
+    commandStr1 = 'java -Dfile.encoding=utf-8 -jar ' + nlPath + ' -g ' + filePath,
+    commandStr2 = 'java -Dfile.encoding=utf-8 -jar ' + nlPath + ' -j -g ' + filePath;
+
+console.log(filePath);
+console.log(commandStr1);
+console.log(commandStr2);
 
 //load the main page
 app.get('/', function(req, res) {
