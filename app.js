@@ -14,10 +14,6 @@ let graphs = parser.parseGEXF(),
     commandStr1 = 'java -Dfile.encoding=utf-8 -jar ' + nlPath + ' -g ' + filePath,
     commandStr2 = 'java -Dfile.encoding=utf-8 -jar ' + nlPath + ' -j -g ' + filePath;
 
-console.log(filePath);
-console.log(commandStr1);
-console.log(commandStr2);
-
 //load the main page
 app.get('/', function(req, res) {
     res.sendFile('public/graph.html', {root: __dirname })
