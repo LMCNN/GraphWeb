@@ -1,4 +1,16 @@
 $(document).ready(function () {
+    //test js for tree view
+    let toggle = document.getElementsByClassName("caret");
+    let i;
+
+    for (i = 0; i < toggle.length; i++) {
+        toggle[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("caret-down");
+        });
+    }
+    //------------------------------
+
     let s = new sigma(document.getElementById('container')),
         currId = 0,
         g = {};
@@ -145,7 +157,7 @@ $(document).ready(function () {
                 console.log(data);
                 $('#msgRoot').remove();
                 $('#msg').append('<div id="msgRoot"></div>');
-                $('#msgRoot').jsonView(data);
+                // $('#msgRoot').jsonView(data);
             },
             error: function(xhr) {
                 alert('Get JSON failed!');
