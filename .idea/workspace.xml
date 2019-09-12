@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="520b8718-f9e6-49fa-9821-ad3ca19d961c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Graph2NL/Graph2NL.jar" beforeDir="false" afterPath="$PROJECT_DIR$/public/Graph2NL/Graph2NL.jar" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,17 +41,17 @@
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\stylesheets" />
-      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\javascript\lib" />
-      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\Graph2NL" />
-      <recent name="C:\Users\Mingchi Li\Documents\GitHub\GraphWeb\public\Graph2NL" />
-      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\data" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public" />
       <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public\views" />
       <recent name="C:\Users\lmcn\Documents\WebstormProjects\graph_web\public\stylesheets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\Graph2NL" />
+      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\stylesheets" />
+      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\javascript\lib" />
+      <recent name="C:\Users\Mingchi Li\Documents\GitHub\GraphWeb\public\Graph2NL" />
+      <recent name="C:\Users\lmcn\Documents\GitHub\GraphWeb\public\data" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -98,7 +96,8 @@
       <workItem from="1567666088859" duration="3000000" />
       <workItem from="1567750760360" duration="4132000" />
       <workItem from="1567750791359" duration="2568000" />
-      <workItem from="1568100796616" duration="237000" />
+      <workItem from="1568100796616" duration="981000" />
+      <workItem from="1568192966427" duration="159000" />
     </task>
     <servers />
   </component>
