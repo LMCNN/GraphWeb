@@ -66,5 +66,18 @@ module.exports = {
           graphs.push(graph);
       }
       return graphs
-  }
+  }//,
+  //
+  // updateGraphs: function (graphs) {
+  //     let data = path.join(__dirname, '../data'),
+  //         files = fs.readdirSync(data),
+  //         fileNum = files.length,
+  //         length = graphs.length;
+  //
+  //     if (fileNum !== length){
+  //         return parse
+  //     }
+  //
+  //
+  // }
 };

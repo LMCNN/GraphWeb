@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const exec = require('child_process').exec;
 
 const parser = require('./public/javascript/parser');
@@ -21,6 +22,10 @@ app.get('/', function(req, res) {
 
 //load the nav bar
 app.get('/rendNav', function (req, res) {
+    let fileNum = fs.readdirSync(filePath).length;
+    if (fileNum !== graphs.length) {
+        graphs = parser.parseGEXF();
+    }
     let fileNames = [];
     for (let i = 0; i < graphs.length; i++){
         let currName = graphs[i].filename;
@@ -38,7 +43,6 @@ app.get('/graph', function (req, res) {
     g.nodes = graphs[graphId].nodes;
     g.edges = graphs[graphId].edges;
     g.model = graphs[graphId].model;
-    // g.description = graphs[graphId].description;
     g.gid = graphId;
 
     res.status(200);

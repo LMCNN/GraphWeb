@@ -121,7 +121,7 @@ $(document).ready(function () {
 
         // Start the ForceAtlas2 algorithm:
         s.startForceAtlas2({worker: true, barnesHutOptimize: false});
-        setTimeout(function() { s.stopForceAtlas2(); }, 250);
+        setTimeout(function() { s.stopForceAtlas2(); }, 500);
     }
 
     //select graph to describe
