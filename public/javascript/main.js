@@ -139,11 +139,12 @@ $(document).ready(function () {
 
     //show the message in the message part
     function showMessage(msg) {
+        console.log(msg);
         let strings = msg.split('\n');
         $('#msgRoot').remove();
         $('#msg').append('<div id="msgRoot"></div>');
         strings.forEach(function (line) {
-            $('#msgRoot').append('<a> ' + line + ' </a><br>');
+            $('#msgRoot').append(line + '<br>');
         });
     }
 
