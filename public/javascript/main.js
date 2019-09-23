@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    // $('#drag').click(function () {
-    //     alert('drag');
-    // });
     $('#drag').mousedown(function (event) {
         let w = $(".canvas").width();
         let paramX = event.screenX;

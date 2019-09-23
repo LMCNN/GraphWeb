@@ -25,37 +25,31 @@ ul.topNav li {float: left;}
 
 /* Style the search field */
 #searchForm {
-    width: 200px;
+    width: 180px;
     float: right;
     margin-right: 5px;
+    padding-right: 5px;
+    background: #fff;
+    border: 1px solid gray;
 }
 
 input[type=text] {
-    width: 75%;
+    width: 150px;
     height: 40px;
     padding: 10px;
     font-size: 17px;
-    border: 1px solid gray;
+    border:none;
     float: left;
-    background: #f1f1f1;
+    background: #fff;
 }
 
 /* Style the submit button */
-input[type="submit"] {
+input[type=image] {
     text-align:center;
-    width: 25%;
     height: 40px;
-    padding: 10px;
-    background: #5f5f5f;
-    color: white;
-    font-size: 15px;
-    border: 1px solid gray;
-    border-left: none; /* Prevent double borders */
-    cursor: pointer;
-}
+    float: right;
+    background: #fff;
 
-input[type="submit"]:hover {
-    background: #111;
 }
 
 /* Style the links inside the list items */
@@ -103,11 +97,6 @@ ul.topNav li a {
     border-radius: 2px;
     margin: 2px;
 }
-
-/*.navBar li a.active {*/
-/*    background-color: #4CAF50;*/
-/*    color: #111;*/
-/*}*/
 
 .navBar li a:hover:not(.active){
     background-color: #111;
