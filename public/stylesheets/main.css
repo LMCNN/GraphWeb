@@ -13,11 +13,11 @@ html, body {
 /* Remove margins and padding from the list, and add a black background color */
 ul.topNav {
     position: fixed;
-    width: 99.5%;
+    width: 100%;
     padding: 5px;
-    margin: 5px;
+    margin-top: 2px;
     border-radius: 3px;
-    background-color: #5f5f5f;
+    background-color: rgba(240, 248, 255, .5);
     box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
 }
 /* Float the list items side by side */
@@ -60,9 +60,9 @@ input[type="submit"]:hover {
 
 /* Style the links inside the list items */
 ul.topNav li a {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 0 rgba(128, 128, 128, 0.5);
     display: inline-block;
-    color: #f2f2f2;
     text-align: center;
     padding: 6px 18px;
     text-decoration: none;
@@ -81,7 +81,7 @@ ul.topNav li a {
     padding: 5px;
     margin: 5px;
     border-radius: 3px;
-    background-color: #5f5f5f;
+    background-color: rgba(240, 248, 255, .5);
     box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
 }
 
@@ -97,7 +97,7 @@ ul.topNav li a {
 
 .navBar li a {
     display: block;
-    color: white;
+    color: rgb(128, 128, 128);
     padding: 8px 16px;
     text-decoration: none;
     border-radius: 2px;
