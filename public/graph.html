@@ -17,34 +17,44 @@
     <script src="javascript/main.js"></script>
     
     <head>
-        <title>Test Graph</title>
+        <title>Graph Show</title>
         <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/jquery.json-view.css">
     </head>
 
     <body>
-        <div class='navBar'>
-            <ul id="navBar">
-                <!-- The Search Bar -->
-                <form id="searchForm">
-                    <input type="text" placeholder="Search.." name="search">
-                    <input type="submit" id="searchBtn"/>
-                </form>
-            </ul>
-        </div>
+        <ul class="topNav">
+            <li><a>Graph Show</a></li>
+            <!-- The Search Bar -->
+            <form id="searchForm">
+                <input type="text" placeholder="Search.." name="search">
+                <input type="submit" id="searchBtn"/>
+            </form>
+        </ul>
+
+        <ul class="navBar" id="navBar"></ul>
 
         <div class="canvas">
-            <a style="position: absolute; left: 2.5%; top: 2%">Graph:</a><br>
             <div class="graph">
-                <div id="container"></div>
+                <div class="graphNav">
+                    <a style="position: absolute; float: left; top: 2%">Graph:</a><br>
+                </div>
+
+                <div class="graphBox">
+                    <div id="container"></div>
+                </div>
             </div>
 
             <div class="splitter">
                 <div id="drag">&#8942;</div>
             </div>
 
-            <a style="position: absolute; left: 55%; top: 2%">Description:</a><br>
-            <div class="msgBox" id="msg"></div>
+            <div class="msgBox">
+                <div class="msgNav">
+                    <a style="float: left;">Description:</a><br>
+                </div>
+                <div class="msgContent" id="msg"></div>
+            </div>
         </div>
     </body>
 </html>

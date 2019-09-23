@@ -74,7 +74,7 @@ $(document).ready(function () {
         describe(currId);
 
         $( "#container" ).remove();
-        $(".graph").append('<div id="container"></div>');
+        $(".graphBox").append('<div id="container"></div>');
 
         // Instantiate sigma:
         s = new sigma({

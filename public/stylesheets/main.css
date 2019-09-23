@@ -6,20 +6,83 @@
 
 html, body {
     position: relative;
-    background-color: rgba(240,248,255,.3);
     height:100%;
+}
+/*Stylesheet for top nav bar*/
+/*------------------------------------------------*/
+/* Remove margins and padding from the list, and add a black background color */
+ul.topNav {
+    position: fixed;
+    width: 99.5%;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
+    background-color: #5f5f5f;
+    box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
+}
+/* Float the list items side by side */
+ul.topNav li {float: left;}
+
+/* Style the search field */
+#searchForm {
+    width: 200px;
+    float: right;
+    margin-right: 5px;
+}
+
+input[type=text] {
+    width: 75%;
+    height: 40px;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid gray;
+    float: left;
+    background: #f1f1f1;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+    text-align:center;
+    width: 25%;
+    height: 40px;
+    padding: 10px;
+    background: #5f5f5f;
+    color: white;
+    font-size: 15px;
+    border: 1px solid gray;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #111;
+}
+
+/* Style the links inside the list items */
+ul.topNav li a {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 6px 18px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 24px;
 }
 
 /*Stylesheet for nav bar*/
 /*------------------------------------------------*/
 .navBar {
     position: fixed;
-    top: 0;
+    top: 10%;
     left: 0;
     width: 15%;
-    height: 100%;
+    height: 88%;
     padding: 5px;
-    background-color: #333;
+    margin: 5px;
+    border-radius: 3px;
+    background-color: #5f5f5f;
+    box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
 }
 
 .navBar.ul {
@@ -27,7 +90,7 @@ html, body {
     list-style-type: none;
     padding: 5px;
     width: 15%;
-    background-color: #f1f1f1;
+    background-color: #5f5f5f;
     height: 100%;
     overflow: auto;
 }
@@ -41,10 +104,10 @@ html, body {
     margin: 2px;
 }
 
-.navBar li a.active {
-    background-color: #4CAF50;
-    color: #111;
-}
+/*.navBar li a.active {*/
+/*    background-color: #4CAF50;*/
+/*    color: #111;*/
+/*}*/
 
 .navBar li a:hover:not(.active){
     background-color: #111;
@@ -54,26 +117,43 @@ html, body {
 /*Stylesheet for canvas*/
 /*------------------------------------------------*/
 .canvas {
-    background-color: rgba(255,192,203,.1);
     position: absolute;
-    top: 0;
+    top: 10%;
     left: 15%;
     width: 85%;
-    height: 100%;
-    margin: 5px;
+    height: 85%;
     padding: 5px;
 }
 
 .graph {
     position: absolute;
-    top: 5%;
-    left: 2.5%;
-    width: 50%;
-    height: 80%;
-    background-color: rgba(240,248,255,.5);
-    border: 2px solid grey;
-    border-radius: 4px;
+    left: 1.5%;
+    width: 51%;
+    height: 100%;
     z-index: 9998!important;
+    margin: 2px;
+    box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
+}
+
+.graphNav {
+    position: absolute;
+    border: 1px solid lightgray;
+    font-size: 20px;
+    padding: 5px;
+    height: 7%;
+    width: 100%;
+    margin: 0 -1px 0 0;
+    background-color: rgba(240, 248, 255, .5);
+}
+
+.graphBox {
+    position: absolute;
+    top:7%;
+    height: 93%;
+    width: 100%;
+    border: 1px solid lightgray;
+    background-color: rgba(240, 248, 255, .5);
+    margin: -1px 0 0 0;
 }
 
 #container {
@@ -84,21 +164,22 @@ html, body {
 
 .splitter {
     position: absolute;
-    top:5%;
     left: 52.5%;
     width: 2.5%;
-    height: 80%;
-    border: 2px solid black;
+    height: 100%;
     text-align: center;
-    /*padding: 15px;*/
 }
 
 #drag {
+    position: absolute;
+    height: 99%;
     font-size: 32px;
     color: lightgray;
     border-radius: 3px;
     min-width: 24px;
     cursor: col-resize;
+    margin: 5px;
+    padding-top: 800%;
 }
 
 .splitter #drag:hover,
@@ -109,15 +190,36 @@ html, body {
 
 .msgBox {
     position: absolute;
-    top:5%;
     left: 55%;
     width: 42%;
-    height: 80%;
-    padding: 10px;
-    background-color: rgba(240,248,255,.5);
-    border: 2px solid grey;
+    height: 100%;
     border-radius: 4px;
     display: block;
+    margin: 2px;
+    box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
+}
+
+.msgNav {
+    position: absolute;
+    border: 1px solid lightgray;
+    font-size: 20px;
+    padding: 5px;
+    height: 7%;
+    width: 100%;
+    margin: 0 -1px 0 0;
+    background-color: rgba(240, 248, 255, .5);
+
+}
+
+.msgContent {
+    position: absolute;
+    top:7%;
+    height: 93%;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid lightgray;
+    margin: -1px 0 0 0;
+    background-color: rgba(240, 248, 255, .5);
 }
 
 #msgRoot {
@@ -125,33 +227,5 @@ html, body {
     width: 100%;
     overflow: scroll;
     table-layout:fixed;
-}
-
-/* Style the search field */
-input[type=text] {
-    width: 75%;
-    height: 40px;
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    background: #f1f1f1;
-}
-
-/* Style the submit button */
-input[type="submit"] {
-    width: 25%;
-    height: 40px;
-    padding: 10px;
-    background: #333;
-    color: white;
-    font-size: 15px;
-    border: 1px solid grey;
-    border-left: none; /* Prevent double borders */
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background: #111;
 }
 
