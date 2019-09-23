@@ -38,7 +38,8 @@ input[type=text] {
     height: 40px;
     padding: 10px;
     font-size: 17px;
-    border:none;
+    /*border:none;*/
+    border-style:none;
     float: left;
     background: #fff;
 }
