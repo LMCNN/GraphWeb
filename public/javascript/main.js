@@ -1,6 +1,19 @@
 $(document).ready(function () {
+    // $('#drag').click(function () {
+    //     alert('drag');
+    // });
+    $('#drag').mousedown(function (event) {
+        let w = $(".canvas").width();
+        let paramX = event.screenX;
+        this.mousemove(function (event) {
+            let diff = event.screenX - paramX;
+            console.log(diff);
+        });
+        this.mouseup(function () {
+            $('#drag').off('mousemove');
+        })
+    });
     //------------------------------
-
     let s = new sigma(document.getElementById('container')),
         currId = 0,
         g = {};

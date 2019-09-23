@@ -131,7 +131,6 @@ ul.topNav li a {
     width: 51%;
     height: 100%;
     z-index: 9998!important;
-    margin: 2px;
     box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
 }
 
@@ -172,13 +171,12 @@ ul.topNav li a {
 
 #drag {
     position: absolute;
-    height: 99%;
+    height: 100%;
     font-size: 32px;
     color: lightgray;
     border-radius: 3px;
-    min-width: 24px;
+    width: 100%;
     cursor: col-resize;
-    margin: 5px;
     padding-top: 800%;
 }
 
@@ -191,11 +189,10 @@ ul.topNav li a {
 .msgBox {
     position: absolute;
     left: 55%;
-    width: 42%;
+    width: 43%;
     height: 100%;
     border-radius: 4px;
     display: block;
-    margin: 2px;
     box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
 }
 
