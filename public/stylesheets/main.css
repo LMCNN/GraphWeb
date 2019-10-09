@@ -6,20 +6,81 @@
 
 html, body {
     position: relative;
-    background-color: rgba(240,248,255,.3);
     height:100%;
+}
+/*Stylesheet for top nav bar*/
+/*------------------------------------------------*/
+/* Remove margins and padding from the list, and add a black background color */
+ul.topNav {
+    position: fixed;
+    height: 55px;
+    width: 100%;
+    padding: 5px;
+    margin-top: 2px;
+    border-radius: 3px;
+    background-color: rgba(240, 248, 255, .5);
+    box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
+}
+/* Float the list items side by side */
+ul.topNav li {float: left;}
+
+/* Style the search field */
+#searchForm {
+    height: 40px;
+    width: 190px;
+    float: right;
+    margin-right: 5px;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid gray;
+}
+
+input[type=text] {
+    width: 150px;
+    height: 100%;
+    font-size: 17px;
+    border-style:none;
+    float: left;
+    background: #fff;
+}
+
+/* Style the submit button */
+input[type=image] {
+    height: 100%;
+    float: right;
+    background: #fff;
+
+}
+
+input[type=text], input[type=image]:focus {
+    outline: none;
+}
+
+/* Style the links inside the list items */
+ul.topNav li a {
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 0 rgba(128, 128, 128, 0.5);
+    display: inline-block;
+    text-align: center;
+    padding: 6px 18px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 24px;
 }
 
 /*Stylesheet for nav bar*/
 /*------------------------------------------------*/
 .navBar {
     position: fixed;
-    top: 0;
+    top: 10%;
     left: 0;
     width: 15%;
-    height: 100%;
+    height: 88%;
     padding: 5px;
-    background-color: #333;
+    margin: 5px;
+    border-radius: 3px;
+    background-color: rgba(240, 248, 255, .5);
+    box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
 }
 
 .navBar.ul {
@@ -27,23 +88,18 @@ html, body {
     list-style-type: none;
     padding: 5px;
     width: 15%;
-    background-color: #f1f1f1;
+    background-color: #5f5f5f;
     height: 100%;
     overflow: auto;
 }
 
 .navBar li a {
     display: block;
-    color: white;
+    color: rgb(128, 128, 128);
     padding: 8px 16px;
     text-decoration: none;
     border-radius: 2px;
     margin: 2px;
-}
-
-.navBar li a.active {
-    background-color: #4CAF50;
-    color: #111;
 }
 
 .navBar li a:hover:not(.active){
@@ -54,26 +110,41 @@ html, body {
 /*Stylesheet for canvas*/
 /*------------------------------------------------*/
 .canvas {
-    background-color: rgba(255,192,203,.1);
     position: absolute;
-    top: 0;
+    top: 10%;
     left: 15%;
     width: 85%;
-    height: 100%;
-    margin: 5px;
+    height: 85%;
     padding: 5px;
+    margin-left: 50px;
 }
 
 .graph {
     position: absolute;
-    top: 5%;
-    left: 2.5%;
-    width: 50%;
-    height: 80%;
-    background-color: rgba(240,248,255,.5);
-    border: 2px solid grey;
-    border-radius: 4px;
+    height: 100%;
     z-index: 9998!important;
+    box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
+}
+
+.graphNav {
+    position: absolute;
+    border: 1px solid lightgray;
+    font-size: 20px;
+    padding: 5px;
+    height: 7%;
+    width: 100%;
+    margin: 0 -1px 0 0;
+    background-color: rgba(240, 248, 255, .5);
+}
+
+.graphBox {
+    position: absolute;
+    top:7%;
+    height: 93%;
+    width: 100%;
+    border: 1px solid lightgray;
+    background-color: rgba(240, 248, 255, .5);
+    margin: -1px 0 0 0;
 }
 
 #container {
@@ -82,40 +153,73 @@ html, body {
     margin: auto;
 }
 
+.splitter {
+    position: absolute;
+    /*left: 50.5%;*/
+    width: 2%;
+    height: 100%;
+}
+
+#drag {
+    position: absolute;
+    height: 100%;
+    font-size: 32px;
+    color: lightgray;
+    border-radius: 3px;
+    width: 100%;
+    cursor: col-resize;
+}
+#drag p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.splitter #drag:hover,
+.splitter #drag.active {
+    color: gray;
+    background-color: #f5f5f5;
+}
+
 .msgBox {
     position: absolute;
-    top:5%;
-    left: 57.5%;
-    width: 40%;
-    height: 80%;
-    padding: 20px;
-    background-color: rgba(240,248,255,.5);
-    border: 2px solid grey;
+    /*left: 53%;*/
+    /*width: 40%;*/
+    height: 100%;
     border-radius: 4px;
+    display: block;
+    box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
 }
 
-/* Style the search field */
-input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
+.msgNav {
+    position: absolute;
+    border: 1px solid lightgray;
+    font-size: 20px;
+    padding: 5px;
+    height: 7%;
+    width: 100%;
+    margin: 0 -1px 0 0;
+    background-color: rgba(240, 248, 255, .5);
+
 }
 
-/* Style the submit button */
-button {
-    width: 20%;
-    padding: 10px;
-    background: #333;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none; /* Prevent double borders */
-    cursor: pointer;
+.msgContent {
+    position: absolute;
+    top:7%;
+    height: 93%;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid lightgray;
+    margin: -1px 0 0 0;
+    background-color: rgba(240, 248, 255, .5);
 }
 
-button:hover {
-    background: #111;
+#msgRoot {
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    table-layout:fixed;
 }
+

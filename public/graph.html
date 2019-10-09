@@ -2,7 +2,8 @@
 <html>
     <!-- Load icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="javascript/lib/jquery-2.1.1.min.js"></script>
+    <script src="javascript/lib/jquery.min.js"></script>
+    <script src="javascript/lib/jquery.json-view.js"></script>
     <!-- SIGMA IMPORTS -->
     <script src="javascript/lib/sigma.min.js"></script>
     <!-- SIGMA PLUGIN IMPORTS -->
@@ -16,28 +17,45 @@
     <script src="javascript/main.js"></script>
     
     <head>
-        <title>Test Graph</title>
+        <title>Graph Show</title>
         <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/jquery.json-view.css">
     </head>
 
     <body>
-        <div class='navBar'>
-            <ul id="navBar">
-                <!-- The Search Bar -->
-                <input id="searchVal" type="text" placeholder="Search.." name="search">
-                <button class="btn" id="searchBtn"><i class="fa fa-search"></i></button>
-            </ul>
-        </div>
+        <ul class="topNav">
+            <li><a>Graph Show</a></li>
+            <!-- The Search Bar -->
+            <form id="searchForm">
+                <input type="text" placeholder="Search.." name="search">
+                <input type="image" id="searchBtn" style="width:20px;" src="images/search-icon.svg" alt="Submit Search" />
+            </form>
+        </ul>
+
+        <ul class="navBar" id="navBar"></ul>
 
         <div class="canvas">
-            <a style="position: absolute; left: 2.5%; top: 2%">Graph:</a><br>
             <div class="graph">
-                <div id="container"></div>
+                <div class="graphNav">
+                    <a style="position: absolute; float: left; top: 2%">Graph:</a><br>
+                </div>
+
+                <div class="graphBox">
+                    <div id="container"></div>
+                </div>
             </div>
 
-            <a style="position: absolute; left: 57.5%; top: 2%">Description:</a><br>
-            <div class="msgBox" id="msg">
-                <div id="msgRoot"></div>
+            <div class="splitter">
+                <div id="drag">
+                    <p>&#8942;</p>
+                </div>
+            </div>
+
+            <div class="msgBox">
+                <div class="msgNav">
+                    <a style="float: left;">Description:</a><br>
+                </div>
+                <div class="msgContent" id="msg"></div>
             </div>
         </div>
     </body>

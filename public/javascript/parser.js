@@ -1,5 +1,6 @@
 const fs = require('fs');
 const gexf = require('gexf');
+const path = require('path');
 
 //this module parse the graph files from a folder
 module.exports = {
@@ -12,12 +13,14 @@ module.exports = {
           '#b9ae2f'
       ];
       let graphs = [],
-          files = fs.readdirSync('./public/data'),
+          data = path.join(__dirname, '../data'),
+          files = fs.readdirSync(data),
           fileNum = files.length;
 
       for (let i = 0; i < fileNum; i++){
-          // Reading your gexf file
-          let gexf_file = fs.readFileSync('./public/data/' + files[i], 'utf-8');
+          // Reading your gexf file './public/data/' +
+          let filePath = path.join(__dirname, '../data/') + files[i];
+          let gexf_file = fs.readFileSync(filePath, 'utf-8');
           // Parsing it
           let graph = gexf.parse(gexf_file);
 
@@ -63,5 +66,18 @@ module.exports = {
           graphs.push(graph);
       }
       return graphs
-  }
+  }//,
+  //
+  // updateGraphs: function (graphs) {
+  //     let data = path.join(__dirname, '../data'),
+  //         files = fs.readdirSync(data),
+  //         fileNum = files.length,
+  //         length = graphs.length;
+  //
+  //     if (fileNum !== length){
+  //         return parse
+  //     }
+  //
+  //
+  // }
 };
