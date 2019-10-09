@@ -13,6 +13,7 @@ html, body {
 /* Remove margins and padding from the list, and add a black background color */
 ul.topNav {
     position: fixed;
+    height: 55px;
     width: 100%;
     padding: 5px;
     margin-top: 2px;
@@ -25,20 +26,19 @@ ul.topNav li {float: left;}
 
 /* Style the search field */
 #searchForm {
-    width: 180px;
+    height: 40px;
+    width: 190px;
     float: right;
     margin-right: 5px;
-    padding-right: 5px;
+    padding: 5px;
     background: #fff;
     border: 1px solid gray;
 }
 
 input[type=text] {
     width: 150px;
-    height: 40px;
-    padding: 10px;
+    height: 100%;
     font-size: 17px;
-    /*border:none;*/
     border-style:none;
     float: left;
     background: #fff;
@@ -46,11 +46,14 @@ input[type=text] {
 
 /* Style the submit button */
 input[type=image] {
-    text-align:center;
-    height: 40px;
+    height: 100%;
     float: right;
     background: #fff;
 
+}
+
+input[type=text], input[type=image]:focus {
+    outline: none;
 }
 
 /* Style the links inside the list items */
@@ -113,12 +116,11 @@ ul.topNav li a {
     width: 85%;
     height: 85%;
     padding: 5px;
+    margin-left: 50px;
 }
 
 .graph {
     position: absolute;
-    left: 1.5%;
-    width: 51%;
     height: 100%;
     z-index: 9998!important;
     box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
@@ -153,10 +155,9 @@ ul.topNav li a {
 
 .splitter {
     position: absolute;
-    left: 52.5%;
-    width: 2.5%;
+    /*left: 50.5%;*/
+    width: 2%;
     height: 100%;
-    text-align: center;
 }
 
 #drag {
@@ -167,7 +168,13 @@ ul.topNav li a {
     border-radius: 3px;
     width: 100%;
     cursor: col-resize;
-    padding-top: 800%;
+}
+#drag p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .splitter #drag:hover,
@@ -178,8 +185,8 @@ ul.topNav li a {
 
 .msgBox {
     position: absolute;
-    left: 55%;
-    width: 43%;
+    /*left: 53%;*/
+    /*width: 40%;*/
     height: 100%;
     border-radius: 4px;
     display: block;

@@ -1,19 +1,12 @@
 $(document).ready(function () {
-    $('#drag').mousedown(function (event) {
-        let w = $(".canvas").width();
-        let paramX = event.screenX;
-        this.mousemove(function (event) {
-            let diff = event.screenX - paramX;
-            console.log(diff);
-        });
-        this.mouseup(function () {
-            $('#drag').off('mousemove');
-        })
-    });
-    //------------------------------
+
+
     let s = new sigma(document.getElementById('container')),
         currId = 0,
-        g = {};
+        g = {},
+        canvasRatio = 0.5;
+
+    adjustRatio(canvasRatio);
 
     //get the graph number from the server
     $.ajax({
@@ -165,4 +158,79 @@ $(document).ready(function () {
             }
         });
     });
+
+    // functions for render canvas
+    //-------------------------------------------------
+    function adjustRatio(ratio) {
+        let graphStyle = {};
+        let splitterStyle = {};
+        let messageStyle = {};
+        if (ratio < 0.1) {
+            $('.graph').hide();
+            $('.msgBox').show();
+            $('#drag').empty();
+            $('#drag').append('<p>&rsaquo;</p>');
+            splitterStyle.left = 0;
+            messageStyle.left = '3%';
+            messageStyle.width = '90%';
+        }
+        else if (ratio > 0.8) {
+            $('.graph').show();
+            $('.msgBox').hide();
+            $('#drag').empty();
+            $('#drag').append('<p>&lsaquo;</p>');
+            splitterStyle.left = '90.5%';
+            graphStyle.left = 0;
+            graphStyle.width = '90%';
+        }
+        else {
+            $('.graph').show();
+            $('.msgBox').show();
+            $('#drag').empty();
+            $('#drag').append('<p>&#8942;</p>');
+            ratio = ratio * 100;
+            graphStyle.left = 0;
+            graphStyle.width = ratio + '%';
+            splitterStyle.left = (ratio + 0.5) + '%';
+            messageStyle.left = (ratio + 3) + '%';
+            messageStyle.width = (90 - ratio) + '%';
+        }
+        $('.graph').css(graphStyle);
+        $('.splitter').css(splitterStyle);
+        $('.msgBox').css(messageStyle);
+    }
+
+    $('#drag').on('mousedown', onMouseDown);
+
+    function onMouseDown(event) {
+        // console.log('down');
+        if (canvasRatio > 0.8) {
+            canvasRatio = 0.8;
+            adjustRatio(canvasRatio);
+        }
+        else if (canvasRatio < 0.1) {
+            canvasRatio = 0.2;
+            adjustRatio(canvasRatio);
+        }
+        else {
+            $('html').on('mousemove', onMouseMove);
+            $('html').on('mouseup', onMouseUp);
+        }
+    }
+
+    function onMouseMove(event) {
+        let ratio = (event.screenX - $('.canvas').position().left - 65) / $('.canvas').width();
+        // console.log(ratio);
+        canvasRatio = ratio;
+        adjustRatio(canvasRatio);
+    }
+
+    function onMouseUp(event) {
+        // console.log('up');
+        renderGraph(g);
+        $('html').off('mousemove', onMouseMove);
+        $('html').off('mouseup', onMouseUp);
+    }
+
+    //--------------------------------------------------
 });
