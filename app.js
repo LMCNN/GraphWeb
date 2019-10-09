@@ -10,10 +10,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //parser graphs from data folder and convert them to a object array
 let graphs = parser.parseGEXF(),
-    nlPath = path.join(__dirname, '/public/Graph2NL/Graph2NL.jar'),
+    nlPath = '"' + path.join(__dirname, '/public/Graph2NL/Graph2NL.jar') + '"',
     filePath = path.join(__dirname, '/public/data/'),
-    commandStr1 = 'java -Dfile.encoding=utf-8 -jar ' + nlPath + ' -g ' + filePath,
-    commandStr2 = 'java -Dfile.encoding=utf-8 -jar ' + nlPath + ' -j -g ' + filePath;
+    commandStr1 = 'java -Dfile.encoding=utf-8 -jar ' + nlPath + ' -g ',
+    commandStr2 = 'java -Dfile.encoding=utf-8 -jar ' + nlPath + ' -j -g ';
 
 //load the main page
 app.get('/', function(req, res) {
@@ -52,11 +52,11 @@ app.get('/graph', function (req, res) {
 
 app.get('/describe', function (req, res) {
     let graphId = req.query.id,
-        file = graphs[graphId].filename;
-
+        file = '"' + filePath + graphs[graphId].filename + '"';
     exec(commandStr1 + file, function(error, stdout, stderr) {
         res.status(200);
         res.setHeader('Content-type', 'text/plain');
+        // console.log(error);
         // console.log(stdout);
         return res.send(stdout);
     });
