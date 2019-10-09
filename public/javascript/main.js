@@ -231,6 +231,5 @@ $(document).ready(function () {
         $('html').off('mousemove', onMouseMove);
         $('html').off('mouseup', onMouseUp);
     }
-
     //--------------------------------------------------
 });
