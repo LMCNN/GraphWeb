@@ -207,10 +207,12 @@ $(document).ready(function () {
         if (canvasRatio > 0.8) {
             canvasRatio = 0.8;
             adjustRatio(canvasRatio);
+            renderGraph(g);
         }
         else if (canvasRatio < 0.1) {
             canvasRatio = 0.2;
             adjustRatio(canvasRatio);
+            renderGraph(g);
         }
         else {
             $('html').on('mousemove', onMouseMove);
