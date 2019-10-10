@@ -52,7 +52,7 @@ input[type=image] {
 
 }
 
-input[type=text], input[type=image]:focus {
+input[type=text], input[type=image], #container:focus {
     outline: none;
 }
 

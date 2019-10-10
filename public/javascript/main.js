@@ -75,45 +75,52 @@ $(document).ready(function () {
         currId = graph.gid;
         describe(currId);
 
+        console.log(g);
+
         $( "#container" ).remove();
         $(".graphBox").append('<div id="container"></div>');
 
+        // create a network
+        let container = document.getElementById('container');
+        let options = {};
+        let network = new vis.Network(container, g, options);
+
         // Instantiate sigma:
-        s = new sigma({
-            graph: graph,
-            renderer: {
-                container: document.getElementById('container'),
-                type: 'canvas'
-            },
-            settings: {
-                minEdgeSize: 5,
-                minArrowSize: 5,
-                edgeHoverSizeRatio: 3,
-                enableEdgeHovering: true,
-                sideMargin: 1
-            }
-        });
-
-        s.bind('clickNode', function(event) {
-            let count = 0,
-                result = "",
-                attr = event.data.node.attributes;
-            // console.log(event.data.node);
-            while (true) {
-                if (typeof attr[count] === 'undefined') break;
-                else {
-                    result += g.model.node[count].title + ': ' + attr[count];
-                    // console.log(attr[count]);
-                    result += '\n';
-                    count++;
-                }
-            }
-            alert(result);
-        });
-
-        // Start the ForceAtlas2 algorithm:
-        s.startForceAtlas2({worker: true, barnesHutOptimize: false});
-        setTimeout(function() { s.stopForceAtlas2(); }, 600);
+        // s = new sigma({
+        //     graph: graph,
+        //     renderer: {
+        //         container: document.getElementById('container'),
+        //         type: 'canvas'
+        //     },
+        //     settings: {
+        //         minEdgeSize: 5,
+        //         minArrowSize: 5,
+        //         edgeHoverSizeRatio: 3,
+        //         enableEdgeHovering: true,
+        //         sideMargin: 1
+        //     }
+        // });
+        //
+        // s.bind('clickNode', function(event) {
+        //     let count = 0,
+        //         result = "",
+        //         attr = event.data.node.attributes;
+        //     // console.log(event.data.node);
+        //     while (true) {
+        //         if (typeof attr[count] === 'undefined') break;
+        //         else {
+        //             result += g.model.node[count].title + ': ' + attr[count];
+        //             // console.log(attr[count]);
+        //             result += '\n';
+        //             count++;
+        //         }
+        //     }
+        //     alert(result);
+        // });
+        //
+        // // Start the ForceAtlas2 algorithm:
+        // s.startForceAtlas2({worker: true, barnesHutOptimize: false});
+        // setTimeout(function() { s.stopForceAtlas2(); }, 600);
     }
 
     //select graph to describe
