@@ -73,7 +73,6 @@ $(document).ready(function () {
     function renderGraph(graph) {
         g = graph;
         currId = graph.gid;
-        // console.log(graph);
         describe(currId);
 
         $( "#container" ).remove();
@@ -99,7 +98,7 @@ $(document).ready(function () {
             let count = 0,
                 result = "",
                 attr = event.data.node.attributes;
-            console.log(event.data.node);
+            // console.log(event.data.node);
             while (true) {
                 if (typeof attr[count] === 'undefined') break;
                 else {
@@ -198,18 +197,18 @@ $(document).ready(function () {
         $('.graph').css(graphStyle);
         $('.splitter').css(splitterStyle);
         $('.msgBox').css(messageStyle);
+
     }
 
     $('#drag').on('mousedown', onMouseDown);
 
     function onMouseDown(event) {
-        // console.log('down');
         if (canvasRatio > 0.8) {
             canvasRatio = 0.8;
             adjustRatio(canvasRatio);
             renderGraph(g);
         }
-        else if (canvasRatio < 0.1) {
+        else if (canvasRatio < 0.2) {
             canvasRatio = 0.2;
             adjustRatio(canvasRatio);
             renderGraph(g);
@@ -222,13 +221,12 @@ $(document).ready(function () {
 
     function onMouseMove(event) {
         let ratio = (event.screenX - $('.canvas').position().left - 65) / $('.canvas').width();
-        // console.log(ratio);
+        if (ratio < canvasRatio) $( "#container" ).remove();
         canvasRatio = ratio;
         adjustRatio(canvasRatio);
     }
 
     function onMouseUp(event) {
-        // console.log('up');
         renderGraph(g);
         $('html').off('mousemove', onMouseMove);
         $('html').off('mouseup', onMouseUp);
