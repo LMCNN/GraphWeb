@@ -24,7 +24,7 @@ app.get('/', function(req, res) {
 app.get('/rendNav', function (req, res) {
     let fileNum = fs.readdirSync(filePath).length;
     if (fileNum !== graphs.length) {
-        graphs = parser.parseForSigma();
+        graphs = parser.parseForVis();
     }
     let fileNames = [];
     for (let i = 0; i < graphs.length; i++){
@@ -64,7 +64,7 @@ app.get('/describe', function (req, res) {
 
 app.get('/json', function (req, res) {
     let graphId = req.query.id,
-        file = graphs[graphId].filename;
+        file = '"' + filePath + graphs[graphId].filename + '"';
 
     exec(commandStr2 + file, function(error, stdout, stderr) {
         res.status(200);

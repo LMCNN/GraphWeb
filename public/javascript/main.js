@@ -1,7 +1,8 @@
 $(document).ready(function () {
     let currId = 0,
         g = {},
-        canvasRatio = 0.5;
+        canvasRatio = 0.5,
+        description;
 
     adjustRatio(canvasRatio);
 
@@ -72,8 +73,6 @@ $(document).ready(function () {
         currId = graph.gid;
         describe(currId);
 
-        console.log(g);
-
         $( "#container" ).remove();
         $(".graphBox").append('<div id="container"></div>');
 
@@ -132,6 +131,23 @@ $(document).ready(function () {
             }
             $('.graphNav').html(msg);
         });
+
+        network.on("selectNode", function (params) {
+            console.log(this.getNodeAt(params.pointer.DOM));
+            let id = this.getNodeAt(params.pointer.DOM);
+            let currNode;
+            for (let i = 0; i < g.nodes.length; i++) {
+                if (g.nodes[i].id === id) {
+                    currNode = g.nodes[i];
+                    break;
+                }
+            }
+            let key = currNode.label + ':' + currNode.title;
+            console.log(description[key]);
+            $('#msgRoot').remove();
+            $('#msg').append('<div id="msgRoot"></div>');
+            // Create json-tree
+        });
     }
 
     //select graph to describe
@@ -149,7 +165,6 @@ $(document).ready(function () {
 
     //show the message in the message part
     function showMessage(msg) {
-        // console.log(msg);
         let strings = msg.split('\n');
         $('#msgRoot').remove();
         $('#msg').append('<div id="msgRoot"></div>');
@@ -157,25 +172,24 @@ $(document).ready(function () {
         strings.forEach(function (line) {
             $('#msgRoot').append(line + '<br>');
         });
+        getJSON();
     }
 
     //get the json file from the server
-    $('#json').click(function () {
+    function getJSON() {
         $.ajax({
             type: 'GET',
             url: '/json?id=' + currId,
             dataType: 'json',
             success: function (data) {
-                console.log(data);
-                $('#msgRoot').remove();
-                $('#msg').append('<div id="msgRoot"></div>');
-                // $('#msgRoot').jsonView(data);
+                description = data;
+                console.log(description);
             },
             error: function(xhr) {
                 alert('Get JSON failed!');
             }
         });
-    });
+    }
 
     // functions for render canvas
     //-------------------------------------------------
