@@ -82,8 +82,46 @@ $(document).ready(function () {
 
         // create a network
         let container = document.getElementById('container');
-        let options = {};
+        let options = {
+            edges: {
+                arrows:'to'
+            },
+            nodes : {
+                shape: 'dot',
+                size: 20
+            },
+            physics: {
+                barnesHut: {
+                    centralGravity: 0.5,
+                    avoidOverlap: 0.5
+                },
+                minVelocity: 0.75
+            },
+            interaction:{hover:true}
+        };
         let network = new vis.Network(container, g, options);
+
+        network.on("hoverNode", function (params) {
+            params.event = "[original event]";
+            // document.getElementById('eventSpan').innerHTML = '<h2>Click event:</h2>' + JSON.stringify(params, null, 4);
+            let id = this.getNodeAt(params.pointer.DOM);
+            let currNode;
+            for (let i = 0; i < g.nodes.length; i++) {
+                if (g.nodes[i].id === id) {
+                    currNode = g.nodes[i];
+                    break;
+                }
+            }
+            // console.log(currNode.attributes);
+            let msg = '<b>Attributes:</b><br>';
+            for(let key in currNode.attributes) {
+                msg = msg + g.dict.node[key].title + ': ';
+                msg = msg + '<b>' + currNode.attributes[key] + '</b>' + '; ';
+            }
+
+            $('.graphNav').html(msg);
+            // $('.graphNav').html(currNode.attributes[0]);
+        });
 
         // Instantiate sigma:
         // s = new sigma({
@@ -138,7 +176,7 @@ $(document).ready(function () {
 
     //show the message in the message part
     function showMessage(msg) {
-        console.log(msg);
+        // console.log(msg);
         let strings = msg.split('\n');
         $('#msgRoot').remove();
         $('#msg').append('<div id="msgRoot"></div>');

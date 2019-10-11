@@ -129,9 +129,9 @@ ul.topNav li a {
 .graphNav {
     position: absolute;
     border: 1px solid lightgray;
-    font-size: 20px;
-    padding: 5px;
-    height: 7%;
+    font-size: 16px;
+    padding: 10px;
+    height: 10%;
     width: 100%;
     margin: 0 -1px 0 0;
     background-color: rgba(240, 248, 255, .5);
@@ -139,8 +139,8 @@ ul.topNav li a {
 
 .graphBox {
     position: absolute;
-    top:7%;
-    height: 93%;
+    top:10%;
+    height: 90%;
     width: 100%;
     border: 1px solid lightgray;
     background-color: rgba(240, 248, 255, .5);
