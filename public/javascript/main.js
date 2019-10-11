@@ -1,8 +1,5 @@
 $(document).ready(function () {
-
-
-    let s = new sigma(document.getElementById('container')),
-        currId = 0,
+    let currId = 0,
         g = {},
         canvasRatio = 0.5;
 
@@ -102,8 +99,6 @@ $(document).ready(function () {
         let network = new vis.Network(container, g, options);
 
         network.on("hoverNode", function (params) {
-            params.event = "[original event]";
-            // document.getElementById('eventSpan').innerHTML = '<h2>Click event:</h2>' + JSON.stringify(params, null, 4);
             let id = this.getNodeAt(params.pointer.DOM);
             let currNode;
             for (let i = 0; i < g.nodes.length; i++) {
@@ -112,7 +107,6 @@ $(document).ready(function () {
                     break;
                 }
             }
-            // console.log(currNode.attributes);
             let msg = '<b>Attributes:</b><br>';
             for(let key in currNode.attributes) {
                 msg = msg + g.dict.node[key].title + ': ';
@@ -120,45 +114,24 @@ $(document).ready(function () {
             }
 
             $('.graphNav').html(msg);
-            // $('.graphNav').html(currNode.attributes[0]);
         });
 
-        // Instantiate sigma:
-        // s = new sigma({
-        //     graph: graph,
-        //     renderer: {
-        //         container: document.getElementById('container'),
-        //         type: 'canvas'
-        //     },
-        //     settings: {
-        //         minEdgeSize: 5,
-        //         minArrowSize: 5,
-        //         edgeHoverSizeRatio: 3,
-        //         enableEdgeHovering: true,
-        //         sideMargin: 1
-        //     }
-        // });
-        //
-        // s.bind('clickNode', function(event) {
-        //     let count = 0,
-        //         result = "",
-        //         attr = event.data.node.attributes;
-        //     // console.log(event.data.node);
-        //     while (true) {
-        //         if (typeof attr[count] === 'undefined') break;
-        //         else {
-        //             result += g.model.node[count].title + ': ' + attr[count];
-        //             // console.log(attr[count]);
-        //             result += '\n';
-        //             count++;
-        //         }
-        //     }
-        //     alert(result);
-        // });
-        //
-        // // Start the ForceAtlas2 algorithm:
-        // s.startForceAtlas2({worker: true, barnesHutOptimize: false});
-        // setTimeout(function() { s.stopForceAtlas2(); }, 600);
+        network.on("hoverEdge", function (params) {
+            let id = this.getEdgeAt(params.pointer.DOM);
+            let currEdge;
+            for (let i = 0; i < g.edges.length; i++) {
+                if (g.edges[i].id === id) {
+                    currEdge = g.edges[i];
+                    break;
+                }
+            }
+            let msg = '<b>Attributes:</b><br>';
+            for(let key in currEdge.attributes) {
+                msg = msg + g.dict.edge[key].title + ': ';
+                msg = msg + '<b>' + currEdge.attributes[key] + '</b>' + '; ';
+            }
+            $('.graphNav').html(msg);
+        });
     }
 
     //select graph to describe
@@ -180,6 +153,7 @@ $(document).ready(function () {
         let strings = msg.split('\n');
         $('#msgRoot').remove();
         $('#msg').append('<div id="msgRoot"></div>');
+        // $('#msgRoot').html(msg);
         strings.forEach(function (line) {
             $('#msgRoot').append(line + '<br>');
         });

@@ -6,15 +6,6 @@
     <!-- Vis-Network -->
     <script src="javascript/lib/vis-network.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/vis-network.css">
-    <!-- SIGMA IMPORTS -->
-    <script src="javascript/lib/sigma.min.js"></script>
-    <!-- SIGMA PLUGIN IMPORTS -->
-    <script src="javascript/lib/plugins/sigma.renderers.edgeLabels.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.renderers.parallelEdges.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.layout.forceAtlas2.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.parsers.gexf.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.renderers.customShapes.min.js"></script>
     <!-- GRAPH SCRIPT-->
     <script src="javascript/main.js"></script>
     
@@ -38,10 +29,7 @@
 
         <div class="canvas">
             <div class="graph">
-                <div class="graphNav">
-<!--                    <a style="position: absolute; float: left; top: 2%">Graph:</a><br>-->
-                </div>
-
+                <div class="graphNav"></div>
                 <div class="graphBox">
                     <div id="container"></div>
                 </div>
@@ -54,9 +42,7 @@
             </div>
 
             <div class="msgBox">
-                <div class="msgNav">
-<!--                    <a style="float: left;">Description:</a><br>-->
-                </div>
+                <div class="msgNav"></div>
                 <div class="msgContent" id="msg"></div>
             </div>
         </div>
