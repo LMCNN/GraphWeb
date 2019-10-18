@@ -7,6 +7,7 @@ const parser = require('./public/javascript/parser');
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/favicon.ico', express.static('images/favicon.ico'));
 
 //parser graphs from data folder and convert them to a object array
 let graphs = parser.parseForVis(),

@@ -143,11 +143,17 @@ $(document).ready(function () {
                 }
             }
             let key = currNode.label + ':' + currNode.title;
-            console.log(description[key]);
+            let data = description[key];
+            console.log(data);
             $('#msgRoot').remove();
             $('#msg').append('<div id="msgRoot"></div>');
+
+
+            // Get DOM-element for inserting json-tree
+            let wrapper = document.getElementById("msgRoot");
+
             // Create json-tree
-            $('#msgRoot').bonsai.bonsai();
+            let tree = jsonTree.create(data, wrapper);
         });
     }
 
