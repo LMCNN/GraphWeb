@@ -147,6 +147,7 @@ $(document).ready(function () {
             $('#msgRoot').remove();
             $('#msg').append('<div id="msgRoot"></div>');
             // Create json-tree
+            $('#msgRoot').bonsai.bonsai();
         });
     }
 
