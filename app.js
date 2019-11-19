@@ -7,9 +7,10 @@ const parser = require('./public/javascript/parser');
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/favicon.ico', express.static('images/favicon.ico'));
 
 //parser graphs from data folder and convert them to a object array
-let graphs = parser.parseGEXF(),
+let graphs = parser.parseForVis(),
     nlPath = '"' + path.join(__dirname, '/public/Graph2NL/Graph2NL.jar') + '"',
     filePath = path.join(__dirname, '/public/data/'),
     commandStr1 = 'java -Dfile.encoding=utf-8 -jar ' + nlPath + ' -g ',
@@ -24,7 +25,7 @@ app.get('/', function(req, res) {
 app.get('/rendNav', function (req, res) {
     let fileNum = fs.readdirSync(filePath).length;
     if (fileNum !== graphs.length) {
-        graphs = parser.parseGEXF();
+        graphs = parser.parseForVis();
     }
     let fileNames = [];
     for (let i = 0; i < graphs.length; i++){
@@ -42,7 +43,7 @@ app.get('/graph', function (req, res) {
     let g = {};
     g.nodes = graphs[graphId].nodes;
     g.edges = graphs[graphId].edges;
-    g.model = graphs[graphId].model;
+    g.dict = graphs[graphId].dict;
     g.gid = graphId;
 
     res.status(200);
@@ -64,7 +65,7 @@ app.get('/describe', function (req, res) {
 
 app.get('/json', function (req, res) {
     let graphId = req.query.id,
-        file = graphs[graphId].filename;
+        file = '"' + filePath + graphs[graphId].filename + '"';
 
     exec(commandStr2 + file, function(error, stdout, stderr) {
         res.status(200);

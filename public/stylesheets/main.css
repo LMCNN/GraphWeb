@@ -4,6 +4,10 @@
     margin: 0;
 }
 
+ul {
+    list-style: none;
+}
+
 html, body {
     position: relative;
     height:100%;
@@ -52,7 +56,7 @@ input[type=image] {
 
 }
 
-input[type=text], input[type=image]:focus {
+input[type=text], input[type=image], #container:focus {
     outline: none;
 }
 
@@ -129,9 +133,9 @@ ul.topNav li a {
 .graphNav {
     position: absolute;
     border: 1px solid lightgray;
-    font-size: 20px;
-    padding: 5px;
-    height: 7%;
+    font-size: 16px;
+    padding: 10px;
+    height: 10%;
     width: 100%;
     margin: 0 -1px 0 0;
     background-color: rgba(240, 248, 255, .5);
@@ -139,8 +143,8 @@ ul.topNav li a {
 
 .graphBox {
     position: absolute;
-    top:7%;
-    height: 93%;
+    top:10%;
+    height: 90%;
     width: 100%;
     border: 1px solid lightgray;
     background-color: rgba(240, 248, 255, .5);
@@ -155,7 +159,6 @@ ul.topNav li a {
 
 .splitter {
     position: absolute;
-    /*left: 50.5%;*/
     width: 2%;
     height: 100%;
 }

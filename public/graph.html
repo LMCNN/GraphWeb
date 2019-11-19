@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html>
     <!-- Load icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="javascript/lib/jquery.min.js"></script>
-    <script src="javascript/lib/jquery.json-view.js"></script>
-    <!-- SIGMA IMPORTS -->
-    <script src="javascript/lib/sigma.min.js"></script>
-    <!-- SIGMA PLUGIN IMPORTS -->
-    <script src="javascript/lib/plugins/sigma.renderers.edgeLabels.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.renderers.parallelEdges.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.layout.forceAtlas2.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.parsers.gexf.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
-    <script src="javascript/lib/plugins/sigma.renderers.customShapes.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <!-- Vis-Network -->
+    <script src="javascript/lib/vis-network.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/vis-network.css">
+    <!-- JSON Tree-->
+    <script src="javascript/lib/jsonTree.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/jsonTree.css">
     <!-- GRAPH SCRIPT-->
     <script src="javascript/main.js"></script>
     
     <head>
         <title>Graph Show</title>
-        <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/jquery.json-view.css">
     </head>
 
     <body>
@@ -36,10 +30,7 @@
 
         <div class="canvas">
             <div class="graph">
-                <div class="graphNav">
-                    <a style="position: absolute; float: left; top: 2%">Graph:</a><br>
-                </div>
-
+                <div class="graphNav"></div>
                 <div class="graphBox">
                     <div id="container"></div>
                 </div>
@@ -52,10 +43,10 @@
             </div>
 
             <div class="msgBox">
-                <div class="msgNav">
-                    <a style="float: left;">Description:</a><br>
+                <div class="msgNav"></div>
+                <div class="msgContent" id="msg">
+                    <div id="msgRoot"></div>
                 </div>
-                <div class="msgContent" id="msg"></div>
             </div>
         </div>
     </body>
